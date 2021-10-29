@@ -1,0 +1,7 @@
+.tutorials-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-column-gap: 12px;
+    grid-row-gap: 30px;
+    list-style-type: none;
+  }

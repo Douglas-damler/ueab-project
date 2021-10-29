@@ -1,0 +1,90 @@
+.tutorial {
+    padding: 10px 13px 16px 14px;
+    border-radius: 6px;
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: 0.3s;
+    background-color: none;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin-top: 20px;
+
+}
+
+.tutorial:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.image-container img, .card-meta p, .card-meta span,.articleAuthor, .articleAuthor a {
+    margin: 10px;
+}
+
+
+.tutorial-container {
+    grid-row-start: 1;
+    grid-column-start: 1;
+
+}
+
+.image-container {
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 4px;
+    
+}
+
+.tutorialTitle {
+    color: #444;
+    transition: all 0.5s ease;
+    font-weight: 500;
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+
+.tutorialTitle:hover {
+    color: #2980b9;
+}
+
+.card-meta p {
+    color: #3498db;
+    text-transform: capitalize;
+    margin-left: 0;
+}
+
+.card-meta span {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-left: 6px;
+}
+
+.articleAuthor a {
+    font-weight: bold;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.tutorial-description {
+    color: black !important;
+    margin: 0;
+}
+
+.redirect  {
+    text-decoration: none;
+}
+
+.title-container h3 {
+    font-size: 25px;
+}
+
+.title-container h3:hover {
+    color: orange;
+}

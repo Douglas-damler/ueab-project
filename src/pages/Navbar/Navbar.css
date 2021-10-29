@@ -1,0 +1,19 @@
+.logo-container {
+    height: 20px;
+}
+
+.links a {
+    text-decoration: none;
+    margin-right: 15px;
+    color: white;
+}
+
+.links a:hover{
+    color: orange;
+}
+
+.navbar {
+    z-index: 1000;
+}
+
+

@@ -1,0 +1,34 @@
+.video-player {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.video-player h3 {
+    margin-bottom: 30px;
+}
+
+.react-player {
+    margin: 0 auto;
+}
+
+.loader {
+    margin-top: 10px;
+    border: 10px solid #dad5d5;
+    border-top: 10px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+
+@media only screen and (max-width:720px) {
+    .video-player {
+        width: 90%;
+    }
+}
