@@ -1,5 +1,6 @@
 .logo-container {
     height: 20px;
+    
 }
 
 .links a {
@@ -14,6 +15,7 @@
 
 .navbar {
     z-index: 1000;
+   
 }
 
 

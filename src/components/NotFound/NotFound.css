@@ -1,0 +1,31 @@
+.not-found-container {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.not-found {
+    margin-top: 120px;
+}
+
+.not-found h1 {
+    font-size: 100px;
+    letter-spacing: 1rem;
+}
+
+.not-found p {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.return-home-button {
+    padding: 10px;
+    background-color: rgb(9, 17, 39);
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.looking {
+     font-size: 16px !important;
+}

@@ -26,12 +26,9 @@ export const Home = () => {
                     <li data-target="#indicator" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active" style={{backgroundImage: "url('https://ielearning.ueab.ac.ke/pluginfile.php/1/theme_remui/slideimage2/1632063002/IMG_3834.JPG')", backgroundRepeat: "no-repeat", backgroundSize: "cover", height: "100vh"}}>
-                        {/* <img src={"https://ielearning.ueab.ac.ke/pluginfile.php/1/theme_remui/slideimage2/1632063002/IMG_3834.JPG"} className="w-100 h-100" /> */}
+                    <div class="carousel-item active" id="carousel-item-one" style={{backgroundRepeat: "no-repeat", backgroundSize: "cover", height: "100vh"}}>
                     </div>
-                    <div class="carousel-item" style={{backgroundImage: "url('https://ielearning.ueab.ac.ke/pluginfile.php/1/theme_remui/slideimage1/1632063002/ueab4.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover", height: "100vh"}}>
-                    </div>
-                    <div class="carousel-item" style={{backgroundImage: "url('https://ielearning.ueab.ac.ke/pluginfile.php/1/theme_remui/slideimage4/1632063002/academic.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover", height: "100vh"}}>
+                    <div class="carousel-item" id="carousel-item-two" style={{backgroundRepeat: "no-repeat", backgroundSize: "cover", height: "100vh"}}>
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#indicator" role="button" data-slide="prev">

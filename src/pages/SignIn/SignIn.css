@@ -22,3 +22,9 @@ i.fas {
 .card {
     border-radius: 1rem;
 }
+
+@media screen and (max-width: 720px) {
+    .vh-100 {
+        margin-top: 0px;
+    }
+}

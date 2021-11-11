@@ -9,7 +9,7 @@ export const Navigation = () => {
   return (
   <Navbar className="navbar" collapseOnSelect expand="lg" style={{background: "#3352a5"}} variant="light">
     <Container>
-      <Navbar.Brand href="#home"><img className="logo" style={{height: "30px"}} src={image} alt="ueab logo" /></Navbar.Brand>
+      <Navbar.Brand style={{background: "none", border: "none", padding: "0"}} href="#home"><img className="logo" style={{height: "45px", borderBlock: "none"}} src={image} alt="ueab logo" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="links">
             <Nav className="me-auto">
@@ -21,6 +21,7 @@ export const Navigation = () => {
         <NavLink to="/about"><span>About</span></NavLink>
         <NavLink to="/contacts"><span>Contacts</span></NavLink>
         <NavLink to="/sign-in"><span>SignIn</span></NavLink>
+        {/* <NavLink to="/admin"><span>Signup</span></NavLink> */}
       </Nav>
   </Navbar.Collapse>
   </Container>

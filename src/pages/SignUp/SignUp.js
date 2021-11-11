@@ -1,77 +1,25 @@
-import React, { useState} from 'react';
-import './SignIn.css';
-// import { aunthenticate } from '../../features/signinSlice';
-// import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
 import axios from 'axios';
-import apiClient from '../../services/services';
+import React, { useState} from 'react';
 
-export const SignIn = () => {
-  // const hasAunthenticated = useSelector(state => state.signin.isAunthenticated);
-  // const dispatch = useDispatch();
-  const history = useHistory();
+
+export const SignUp = () => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
-  const [ userEmail, setUserEmail ] = useState('')
-
-  // const handleSubmit = () => {
-  //   dispatch(aunthenticate({}));
-  //   console.log(hasAunthenticated);
-  //   if (hasAunthenticated) {
-  //     history.push("/admin/add-new-admins");
-  //   }
-  // }
+  const [ confirmPassword, setConfirmPassword ] = useState('');
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+     event.preventDefault();
+     const data = {
+         email: email,
+         password: password,
+         password_confirmation: confirmPassword
+     } 
 
-    const data =  {
-      email: email,
-      password: password
-    }
-  
+     console.log(data)
 
-//     apiClient.get('/sanctum/csrf-cookie')
-//     .then(response => {
-//       apiClient.post('http://127.0.0.1:8000/api/login', data)
-//       .then(res => {
-//           console.log(res);
-//           if (res.status === 201) {
-//             localStorage.setItem('auth_token', res.data.token);
-//             localStorage.setItem('auth_name', res.data.email);
-//             history.push('/admin/dashboard');
-//           }
-
-//           else if (res.data.status === 401) {
-
-//           }
-
-//           else {
-
-//           }
-//       });
-//   });
-// }
-
-    axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie')
-    .then(response => {
-      axios.post('http://127.0.0.1:8000/api/login', data)
-      .then(res => {
-        console.log(res);
-        if (res.status === 201) {
-          localStorage.setItem('auth_token', res.data.token);
-          localStorage.setItem('auth_name', res.data.email);
-          history.push('/admin/dashboard');
-        }
-
-        else if (res.data.status === 401) {
-
-        }
-
-        else {
-
-        }
-      })
+    axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then(response => {
+      axios.post('http://127.0.0.1:8000/api/register', data)
+      .then((response) => console.log(response))
     })
   }
 
@@ -115,6 +63,17 @@ export const SignIn = () => {
                             className="form-control 
                             form-control-lg" />
                           <label className="form-label" htmlFor="password">Password</label>
+                        </div>
+
+                        <div className="form-outline mb-4">
+                          <input
+                            type="password"
+                            name="password-confirmation"
+                            value={confirmPassword}
+                            onChange={(event) => {setConfirmPassword(event.target.value)}} 
+                            className="form-control 
+                            form-control-lg" />
+                          <label className="form-label" htmlFor="password">Password Confirm</label>
                         </div>
       
                         <div className="pt-1 mb-4">

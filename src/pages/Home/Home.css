@@ -12,7 +12,21 @@ body {
     position: relative;
   }
  
-  
+
+  .carousel-item {
+    background-image: url('../../images/carousel_image_2-min.jpg');
+    background-repeat: "no-repeat"; 
+    background-size: cover; 
+    height: "100vh";
+  }
+
+  #carousel-item-one {
+    background-image: url('../../images/carousel_image_1-min.jpg');
+  }
+
+  #carousel-item-two {
+    background-image: url('../../images/carousel_image_2-min.jpg');
+  }
   
   .masthead {
     position: absolute;

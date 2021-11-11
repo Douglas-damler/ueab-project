@@ -1,0 +1,24 @@
+.remove {
+    color: blue;
+}
+
+.remove:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.modal-body {
+    position: relative;
+    height: auto;
+    padding: 20px;
+    top: 100px;
+}
+
+.md-form {
+    margin-top: 50px;
+}
+
+.form-group {
+    position: relative;
+    
+}
