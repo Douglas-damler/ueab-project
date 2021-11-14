@@ -1,12 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import data from '../links/data.json'
+import axios from "axios";
 
 export const loadTutorials = createAsyncThunk(
     'tutorials/loadTutorials',
     () => {
-        console.log(data);
-        return data;
+        axios.get('http://127.0.0.1:8000/api/videos')
+        .then((response) => {
+            console.log(response)
+            console.log(response.data)
+            return response.data;
+        })
     }
 );
 

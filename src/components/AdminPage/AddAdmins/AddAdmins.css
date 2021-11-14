@@ -7,7 +7,7 @@
     cursor: pointer;
 }
 
-.modal-body {
+#modal{
     position: relative;
     height: auto;
     padding: 20px;

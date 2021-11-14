@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react";
+import React from "react";
 import './Sidebar.css';
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
@@ -11,27 +11,15 @@ export const Sidebar = () => {
     const history = useHistory();
     const handleSignout = () => {
         axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie')
-        .then(response => {
-            axios.post('http://127.0.0.1:8000/api/logout', {headers: {"Authorization": `Bearer ${token}`}})
+        .then((response) => {
+            axios.get('http://127.0.0.1:8000/api/logout', {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 console.log(response);
             })
         })
-        localStorage.removeItem('auth_token');
+        sessionStorage.removeItem('auth_token');
         history.push("/sign-in");
     }
-
-    useEffect(() => {
-        
-        // console.log(token)
-        // axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie')
-        // .then(response => {
-        //     axios.get('http://127.0.0.1:8000/api/users', {headers: {"Authorization": `Bearer ${token}`}})
-        //     .then((response) => {
-        //         console.log(response);
-        //     })
-        // })
-    })
     return (
         <div>
            {/* <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
