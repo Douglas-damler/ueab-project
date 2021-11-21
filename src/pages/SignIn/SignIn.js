@@ -1,12 +1,17 @@
 import React, { useState} from 'react';
 import './SignIn.css';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import { rerender } from '../../features/signinSlice';
+import { useDispatch } from 'react-redux';
 
 
 export const SignIn = () => {
+  const dispatch = useDispatch();
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+  const [ error, setError ] = useState('');
   const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -14,27 +19,28 @@ export const SignIn = () => {
       email: email,
       password: password
     }
-  
+    if (sessionStorage.getItem("auth_token")) {
+      toast.error("You are already signed in");
+      return;
+    }
     axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie')
     .then(response => {
       axios.post('http://127.0.0.1:8000/api/login', data)
       .then(res => {
-        console.log(res);
+        console.log(res.status)
         if (res.status === 201) {
           sessionStorage.setItem('auth_token', res.data.token);
-          sessionStorage.setItem('auth_name', res.data.email);
+          sessionStorage.setItem('auth_name', res.data.user.email);
+          sessionStorage.setItem('id', res.data.user.id.toString());
+          dispatch(rerender(true));
           history.push('/admin/dashboard');
         }
-
-        else if (res.data.status === 401) {
-
-        }
-
+        
         else {
-
+          setError("Invalid credentials")
         }
-      })
-    })
+      }).catch(err => console.log(err.message))
+    }).catch(err => console.log(err.message))
   }
 
     return (
@@ -46,7 +52,7 @@ export const SignIn = () => {
                 <div className="row g-0">
                   <div className="col-md-6 col-lg-7 d-flex align-items-center">
                     <div className="card-body p-4 p-lg-5 text-black">
-                      <form>
+                      <form onSubmit={handleSubmit}>
                         <div className="d-flex align-items-center mb-3 pb-1">
                           <i className="fas fa-cubes fa-2x me-3" ></i>
                           <span className="h1 fw-bold mb-0">Login as an Administrator</span>
@@ -65,7 +71,8 @@ export const SignIn = () => {
                             }}
                             className="form-control 
                             form-control-lg" />
-                          <label className="form-label" htmlFor="email">Email address</label>
+                          <label className="form-label" htmlFor="email">Email address</label> <br />
+                          <small style = {{color: "red"}}>{error}</small>
                         </div>
       
                         <div className="form-outline mb-4">
@@ -80,7 +87,7 @@ export const SignIn = () => {
                         </div>
       
                         <div className="pt-1 mb-4">
-                          <button className="btn btn-dark btn-lg btn-block" type="button" onClick={handleSubmit}>Login</button>
+                          <button className="btn btn-dark btn-lg btn-block" type="submit" >Login</button>
                         </div>
                       </form>
                     </div>

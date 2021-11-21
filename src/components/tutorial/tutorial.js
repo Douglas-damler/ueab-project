@@ -8,7 +8,12 @@ export const Tutorial = (props) => {
         <Link className="redirect" to={`/tutorials/${props.tutorial.id}`}>
             <div className="tutorial" >
                 <div className="tutorial-container">
-                <div className="image-container"> <img className="tutorial-image" src={props.tutorial.thumbnail} alt={''}/></div>
+                <div className="image-container"> 
+                    <img 
+                    className="tutorial-image" 
+                    src={`https://img.youtube.com/vi/${props.tutorial.youtubeUrl.split(".be/")[1]}/hqdefault.jpg`} 
+                    alt={''}/>
+                </div>
                 <div className="title-container">
                     <h3>{props.tutorial.title}</h3>
                 </div>

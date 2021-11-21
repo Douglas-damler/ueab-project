@@ -6,6 +6,7 @@ export const Home = () => {
   const [searchValue, setSearchValue] = useState("");
   const history = useHistory();
   const searchInputRef = useRef();
+  
   const onSearchHandler = (event) => {
     event.preventDefault();
     if (searchValue === "") {
@@ -17,6 +18,7 @@ export const Home = () => {
     const queryString = new URLSearchParams(query).toString();
     history.push({ pathname: "/search-results", search: queryString });
   };
+
   return (
     <div className="home-container">
       <div id="indicator" className="carousel slide" data-ride="carousel">

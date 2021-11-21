@@ -21,19 +21,16 @@ export const Dashboard = () => {
             headers: { Authorization: `Bearer ${token}` },
           })
           .then((response) => {
-            console.log(response);
             setUsers(response.data);
           });
       })
       .then(() => {
         axios.get("http://127.0.0.1:8000/api/photos").then((response) => {
-          console.log(response);
           setPhotos(response.data.images);
         });
       })
       .then(() => {
         axios.get("http://127.0.0.1:8000/api/videos").then((response) => {
-          console.log(response);
           setVideos(response.data);
         });
       });
@@ -151,7 +148,8 @@ export const Dashboard = () => {
                         {/* <th scope="col">First Name</th>
                         <th scope="col">Last Name</th> */}
                         <th scope="col">Email address</th>
-                        <th scope="col">Created At</th>
+                        <th scope="col">Date Created</th>
+                        <th scope="col">Time Created</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -159,7 +157,8 @@ export const Dashboard = () => {
                         <tr key={index}>
                           <td>{index + 1}</td>
                           <td>{data.email}</td>
-                          <td>{data.created_at}</td>
+                          <td>{data.created_at.split("T")[0]}</td>
+                          <td>{data.created_at.split("T")[1].split(".")[0]}</td>
                         </tr>
                       ))}
                     </tbody>

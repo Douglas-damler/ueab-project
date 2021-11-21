@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./AddAdmins.css";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure();
@@ -12,10 +12,10 @@ toast.configure();
 export const AddAdmins = () => {
   const [ users, setUsers ] = useState([]);
   const [ update, setUpdate ] = useState(false);
+  const [ remove, setRemove ] = useState(false);
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ confirm, setConfirm ] = useState('');
-  const [ error, setError ] = useState(false);
 
   const token = sessionStorage.getItem('auth_token');
 
@@ -28,25 +28,32 @@ export const AddAdmins = () => {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          console.log(response);
           setUsers(response.data);
-        });
-    })
-  },[token, update]);
+        }).catch(err => console.log(err.message))
+    }).catch(err => console.log(err.message))
+  },[update, token, remove]);
 
 
   const handleRemoveAdmin = (id) => {
-      if (id === 3) {
-        toast.error("You cannot remove the initail admin")
+      if (id === 1) {
+        toast.error("You cannot remove the initial admin")
+        return
+      }
+      if (id.toString() === sessionStorage.getItem("id"))
+      {
+        toast.error("You cannot remove Yourself, Please ask another admin to remove you.")
+        return
+      }
+      if (!token) {
         return
       }
       axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then(response => {
       axios.delete(`http://127.0.0.1:8000/api/users/${id}`, {headers: {Authorization: `Bearer ${token}`}})
-      .then((response) => 
-        setUpdate(false),
-      ).then(() => {
+      .then((response) =>{
+        setRemove(true)
         toast.success("User Removed")
-      });
+      } 
+      ).catch(err => console.log(err.message))
     });
   }
 
@@ -59,14 +66,15 @@ export const AddAdmins = () => {
     }
 
     axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then(response => {
-      axios.post('http://127.0.0.1:8000/api/register', data)
-      .then((response) => 
+      axios.post('http://127.0.0.1:8000/api/users',data,{headers: {Authorization: `Bearer ${token}`}})
+      .then((response) => {
         setUpdate(true)
-      ).then(() => {
         toast.success("User Registered")
         setEmail("")
         setConfirm("")
         setPassword("")
+      }).catch((error) => {
+        toast.error("Probably a duplicated email or unmatching passwords")
       });
     });
   };
@@ -112,7 +120,8 @@ export const AddAdmins = () => {
                 <tr>
                   <th className="border-bottom">#</th>
                   <th className="border-bottom">Email Address</th>
-                  <th className="border-bottom">Admin Created At</th>
+                  <th className="border-bottom">Date Created</th>
+                  <th className="border-bottom border-right">Time Created</th>
                   <th className="border-bottom">Action</th>
                 </tr>
               </thead>
@@ -121,7 +130,8 @@ export const AddAdmins = () => {
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{user.email}</td>
-                    <td>{user.created_at}</td>
+                    <td>{user.created_at.split("T")[0]}</td>
+                    <td>{user.created_at.split("T")[1].split(".")[0]}</td>
                     <td 
                       className="remove"
                       onClick={() => {

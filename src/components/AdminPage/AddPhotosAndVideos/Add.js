@@ -50,8 +50,8 @@ export const AddPhotosAndVideos = () => {
           toast.success("Images Uploaded");
           setImages([])
           
-        });
-    });
+        }).catch(err => err.message)
+    }).catch(err => err.message)
   };
 
   const handleSubmitVideos = (event) => {
@@ -66,16 +66,15 @@ export const AddPhotosAndVideos = () => {
     console.log(data)
 
     axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie").then((response) => {
-      axios
-        .post("http://127.0.0.1:8000/api/videos", data, {
+      axios.post("http://127.0.0.1:8000/api/videos", data, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
           console.log(response);
           clearVideoForm();
           toast("Video uploaded")
-        });
-    });
+        }).catch(err => err.message)
+    }).catch(err => console.log(err.message))
     
   };
 
@@ -84,7 +83,7 @@ export const AddPhotosAndVideos = () => {
       <div className="container-fluid mt-0">
         <div className="mb-4 mb-lg-0">
           <Breadcrumb
-            className="d-none d-md-inline-block mt-3"
+            className="d-none d-md-inline-block mt-5"
             listProps={{ className: "breadcrumb-dark breadcrumb-transparent" }}
           >
             <Breadcrumb.Item>

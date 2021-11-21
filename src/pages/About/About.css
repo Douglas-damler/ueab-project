@@ -1,5 +1,5 @@
 .hero-container {
-    background:linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ),url('https://registration.ueab.ac.ke/assets/landing/images/slider/landing/admin-block-ueab.png'); 
+    background:linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ),url('../../images/carousel_image_2-min.jpg'); 
     background-repeat: no-repeat;
     height: 50vh; 
     background-size: cover; 

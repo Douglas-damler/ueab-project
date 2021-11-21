@@ -10,13 +10,14 @@ export const AllTutorials = () => {
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/api/videos')
         .then((response) => {
+            console.log(response)
             setTutorials(response.data);
         })
     },[])
 
     return (
         <div className="main">
-            <h3 className="featured-title">E-learning Tutorials</h3>
+            <h3 className="featured-title pt-5">E-learning Tutorials</h3>
 
             {tutorials.length  ? (
                 <TutorialList tutorials={tutorials} />

@@ -22,6 +22,24 @@
     animation: spin 2s linear infinite;
 }
 
+.delete-container {
+    margin-top: 10px;
+}
+
+.delete-container .vicon {
+    margin: 0 20px 0 10px;
+    font-size: 20px;
+}
+
+
+#delete {
+    color: red;
+}
+
+#delete:hover {
+    cursor: pointer;
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg);}
     100% { transform: rotate(360deg);}

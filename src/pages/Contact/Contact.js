@@ -11,7 +11,7 @@ export const Contact = () => {
   };
 
   return (
-    <div className="contact-container row mt-1 pt-4">
+    <div className="contact-container row pt-4">
       <div className="side-content-container col-md-6 pt-5">
         <div className="side-content px-5 py-3 text-light">
           <p className="lead">Address</p>
@@ -29,7 +29,7 @@ export const Contact = () => {
       <div className="col-md-6 bg-light p-5">
         <p className="display-6">Send Us A Message.</p>
         <form onSubmit={handleSubmit}>
-          <div className="form-group m-3 p-1">
+          <div className="form-group m-md-3 p-1">
             <label htmlFor="email" className="my-2">
               Email address
             </label>
@@ -49,7 +49,7 @@ export const Contact = () => {
               We'll never share your email with anyone else.
             </small>
           </div>
-          <div className="form-group m-3 p-1">
+          <div className="form-group m-md-3 p-md-1">
             <label htmlFor="subject" className="my-2">
               Subject
             </label>
@@ -67,7 +67,7 @@ export const Contact = () => {
               }}
             />
           </div>
-          <div className="form-group m-3 p-1">
+          <div className="form-group m-md-3 p-md-1">
             <label htmlFor="message" className="my-2">
               Message
             </label>

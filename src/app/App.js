@@ -22,6 +22,7 @@ function App() {
   return (
     <Router>
       <Navigation />
+      <div className="main-container mt-5">
       <Switch>
         <Route exact path="/about">
           <About />
@@ -89,6 +90,7 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
+      </div>
     </Router>
   );
 }

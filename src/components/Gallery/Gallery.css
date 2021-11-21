@@ -28,6 +28,17 @@
     transition: all .25s ease-in-out;
   }
 
+  .images-delete-button {
+    position: absolute;
+    top: 90%;
+    left: 5%;
+  }
+
+  .icon:hover {
+    cursor: pointer;
+    color: white;
+  }
+
   .card-icon-open :hover, .card-icon-open :focus {
       color: #111
   }
