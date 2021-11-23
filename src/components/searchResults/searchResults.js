@@ -21,7 +21,7 @@ export const SearchResults = () => {
                 (dat) => dat.title.toLowerCase().includes(searchTerm.toLowerCase()));
             setResults(results);
         }).catch(err => console.log(err.message));
-    },[])
+    },[searchTerm])
     
     return (
         tutorials.length ? (
@@ -33,13 +33,10 @@ export const SearchResults = () => {
                     </div>
                 </div>
             ): (
-                // <div className="pt-5 search-results">
-                //     <p>Sorry, we couldn't find any results for <span style={{fontWeight: 'bold'}}>{searchTerm}</span>. Please try a different query instead😎</p>
-                // </div>
 
                 <div className="search-results-image">
                     <div>
-                        <img src={notfound} />
+                        <img src={notfound} alt="not-found arts" />
                     </div>
                 </div>
             )

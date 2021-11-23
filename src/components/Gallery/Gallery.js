@@ -35,7 +35,7 @@ export const Gallery = () => {
       .then((response) => {
         console.log(response)
         toast.success("Image Deleted")
-      })
+      }).catch((err) => console.log(err.message))
     })
     
   }

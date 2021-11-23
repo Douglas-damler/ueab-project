@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
+
 .tutorial {
     padding: 10px 13px 16px 14px;
     border-radius: 6px;
@@ -18,7 +21,7 @@
     cursor: pointer;
 }
 
-.image-container img, .card-meta p, .card-meta span,.articleAuthor, .articleAuthor a {
+ .card-meta p, .card-meta span,.articleAuthor, .articleAuthor a {
     margin: 10px;
 }
 
@@ -41,18 +44,10 @@
     
 }
 
-.tutorialTitle {
-    color: #444;
-    transition: all 0.5s ease;
-    font-weight: 500;
-    text-decoration: none;
-    font-weight: bold;
-    
+.tutorial-title {
+
 }
 
-.tutorialTitle:hover {
-    color: #2980b9;
-}
 
 .card-meta p {
     color: #3498db;
@@ -66,12 +61,6 @@
     margin-left: 6px;
 }
 
-.articleAuthor a {
-    font-weight: bold;
-    color: #3498db;
-    text-decoration: none;
-}
-
 .tutorial-description {
     color: black !important;
     margin: 0;
@@ -82,7 +71,8 @@
 }
 
 .title-container h3 {
-    font-size: 25px;
+    font-size: 20px;
+    font-family: 'Barlow', sans-serif;
 }
 
 .title-container h3:hover {

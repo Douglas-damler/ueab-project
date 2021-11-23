@@ -22,7 +22,7 @@ export const Dashboard = () => {
           })
           .then((response) => {
             setUsers(response.data);
-          });
+          }).catch((err) => console.log(err))
       })
       .then(() => {
         axios.get("http://127.0.0.1:8000/api/photos").then((response) => {
@@ -33,7 +33,7 @@ export const Dashboard = () => {
         axios.get("http://127.0.0.1:8000/api/videos").then((response) => {
           setVideos(response.data);
         });
-      });
+      }).catch((err) => console.log(err.message))
   }, [token]);
 
   return (

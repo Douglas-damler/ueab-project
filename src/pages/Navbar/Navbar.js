@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Nav, Navbar, Container, } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import image from '../../images/logo.png';
-import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';

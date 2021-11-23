@@ -14,32 +14,49 @@ export const AddPhotosAndVideos = () => {
   const [ description, setDescription ] = useState("");
   const [ isFile, setIsFile ] = useState(false);
   const [ images, setImages ] = useState([]);
+  const [ imagesError, setImagesError ] = useState('');
+  const [ linkError, setLinkError ] = useState('');
  
   const token = sessionStorage.getItem("auth_token");
 
   function onChangeImages(e) {
     const imagesArray = [];
     for (let i = 0; i < e.target.files.length; i++) {
+      var file = e.target.files[i];
+      var fsize = (file.size / 1024 / 1024).toFixed(2); 
+      var t = file.type.split('/').pop().toLowerCase();
+      if (t !== "jpeg" && t !== "jpg" && t !== "png" && t !== "bmp" && t !== "gif") {
+        setImagesError("Allowed formats are .jpeg, .jpg, .png, .bmp. .gif")
+        return;
+      }
+      if(fsize > 2) {
+        setImagesError("Maximum image size is 2mbs");
+        return;
+      }
       imagesArray.push(e.target.files[i]);
+      setImagesError("")
+      setImages(imagesArray)
     }
-    setImages(imagesArray);
   }
 
   const clearVideoForm = () => {
     setTitle("");
-    setDescription("")
-    setIsFile(false)
-    setYoutubeLink("")
+    setDescription("");
+    setIsFile(false);
+    setYoutubeLink("");
+    setLinkError("");
   }
 
-  
   const handleSubmitImages = (event) => {
     event.preventDefault();
     const data = new FormData();
     for (let i = 0; i < images.length; i++) {
       data.append("photos[]", images[i]);
     }
-    console.log(data);
+
+    if (!images.length) {
+      return
+    }
     axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie").then((response) => {
       axios
         .post("http://127.0.0.1:8000/api/photos", data, {
@@ -48,7 +65,8 @@ export const AddPhotosAndVideos = () => {
         .then((response) => {
           console.log(response);
           toast.success("Images Uploaded");
-          setImages([])
+          setImages([]);
+          setImagesError("");
           
         }).catch(err => err.message)
     }).catch(err => err.message)
@@ -56,13 +74,19 @@ export const AddPhotosAndVideos = () => {
 
   const handleSubmitVideos = (event) => {
     event.preventDefault();
-    const data = {
-      title: title,
-      description: description,
-      youtubeUrl: youtubeLink,
-      isFile: isFile,
-    };
-
+    var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    if(!youtubeLink.match(regExp)){
+        setLinkError("Please Enter a valid youtube link");
+        return;
+    }
+    
+  const data = {
+    title: title,
+    description: description,
+    youtubeUrl: youtubeLink,
+    isFile: isFile,
+  };
+    
     console.log(data)
 
     axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie").then((response) => {
@@ -109,11 +133,14 @@ export const AddPhotosAndVideos = () => {
                 <input
                   type="file"
                   name="photos"
-                  className="form-control-file mt-4"
+                  required
+                  className="form-control mt-4"
                   onChange={onChangeImages}
                   multiple
                 />
-                <div className="card-action mt-5">
+                <br/>
+                <small style={{color:"red"}}>{imagesError}</small>
+                <div className="card-action mt-3">
                   <button type="submit" className="btn btn-success mr-4">
                     Submit
                   </button>
@@ -197,6 +224,7 @@ export const AddPhotosAndVideos = () => {
                   <label htmlFor="pillInput">Enter Youtube Link</label>
                   <input
                     type="text"
+                    required
                     className="form-control input-pill"
                     id="pillInput"
                     placeholder="Youtube link here"
@@ -205,6 +233,8 @@ export const AddPhotosAndVideos = () => {
                       setYoutubeLink(e.target.value);
                     }}
                   />
+              
+                  <small>{linkError}</small>
                 </div>
 
                 <div className="form-group" hidden={!video}>

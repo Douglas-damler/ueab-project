@@ -12,7 +12,7 @@ export const AllTutorials = () => {
         .then((response) => {
             console.log(response)
             setTutorials(response.data);
-        })
+        }).catch((err) => console.log(err.message));
     },[])
 
     return (

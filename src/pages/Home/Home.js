@@ -74,7 +74,7 @@ export const Home = () => {
               Access E-learning like a PRO. Get the latest photos for events
               here and Catch up with the latest Elearning tutorials here
             </p>
-            <form id="searchForm">
+            <form id="searchForm" onSubmit={onSearchHandler}>
               <div className="row input-group-newsletter">
                 <div className="col">
                   <input
@@ -96,7 +96,6 @@ export const Home = () => {
                     className="btn btn-primary"
                     id="submitButton"
                     type="submit"
-                    onClick={onSearchHandler}
                   >
                     Search!
                   </button>

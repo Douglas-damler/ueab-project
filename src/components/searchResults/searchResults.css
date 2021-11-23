@@ -3,7 +3,7 @@
     margin: 0 auto;
     margin-top: 20px;
 }
-
+When we walk with the Lord, in the light of his word. What a glory he sheds on our way
 .search-results-image {
     width: 90%;
     margin: 0 auto;
@@ -11,5 +11,10 @@
 
 .search-results-image div {
     text-align: center;
+    width: 90%;
     
+}
+
+.search-results-image div img {
+    width: 60%;
 }

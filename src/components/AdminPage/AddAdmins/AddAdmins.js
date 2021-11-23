@@ -153,7 +153,7 @@ export const AddAdmins = () => {
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div className="modal-dialog" role="document">
+          <form onSubmit={handleSubmit} className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
@@ -161,7 +161,7 @@ export const AddAdmins = () => {
                 </h5>
               </div>
               <div className="modal-body" id="modal">
-                <form className="md-form mt-5 mb-0">
+                <div className="md-form mt-5 mb-0">
                   <div className="form-group">
                     <label>Email Address</label>
                     <input
@@ -206,7 +206,7 @@ export const AddAdmins = () => {
                       minLength="8"
                     />
                   </div>
-                </form>
+                </div>
               </div>
               <div className="modal-footer mt-0">
                 <button
@@ -216,12 +216,12 @@ export const AddAdmins = () => {
                 >
                   Close
                 </button>
-                <button type="submit" onClick={handleSubmit} className="btn btn-primary">
+                <button type="submit" className="btn btn-primary">
                   Add
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </main>

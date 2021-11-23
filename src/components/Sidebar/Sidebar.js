@@ -21,7 +21,7 @@ export const Sidebar = () => {
             .then((response) => {
                 console.log(response);
             })
-        })
+        }).catch((err) => console.log(err.message));
         sessionStorage.removeItem('auth_token');
         sessionStorage.removeItem('auth_item');
         sessionStorage.removeItem("id");

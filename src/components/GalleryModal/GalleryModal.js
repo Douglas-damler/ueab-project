@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import './GalleryModal.css';
 
 export const GalleryModal = (props) => {
     if (props.isOpen === false) { 
@@ -15,7 +16,7 @@ export const GalleryModal = (props) => {
             name={props.name}
         >
             <div className="modal-body">
-                <i className="modal-close" onClick={props.onClick}><span><FontAwesomeIcon icon={faTimes} /></span></i>
+                <i className="modal-close" onClick={props.onClick}><span><FontAwesomeIcon className="close-icon" icon={faTimes} /></span></i>
                 <img src={props.src} alt="" />
             </div>
 

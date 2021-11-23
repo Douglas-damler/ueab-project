@@ -14,7 +14,7 @@ export const Tutorial = (props) => {
                     src={`https://img.youtube.com/vi/${props.tutorial.youtubeUrl.split(".be/")[1]}/hqdefault.jpg`} 
                     alt={''}/>
                 </div>
-                <div className="title-container">
+                <div className="mt-3 title-container">
                     <h3>{props.tutorial.title}</h3>
                 </div>
                 <div className="card-meta">

@@ -6,7 +6,6 @@ import { toast } from 'react-toastify';
 import { rerender } from '../../features/signinSlice';
 import { useDispatch } from 'react-redux';
 
-
 export const SignIn = () => {
   const dispatch = useDispatch();
   const [ email, setEmail ] = useState('');
@@ -35,7 +34,6 @@ export const SignIn = () => {
           dispatch(rerender(true));
           history.push('/admin/dashboard');
         }
-        
         else {
           setError("Invalid credentials")
         }
@@ -44,7 +42,7 @@ export const SignIn = () => {
   }
 
     return (
-        <section className="vh-100">
+      <section className="vh-100">
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
