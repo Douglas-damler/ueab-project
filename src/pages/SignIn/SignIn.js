@@ -26,7 +26,6 @@ export const SignIn = () => {
     .then(response => {
       axios.post('http://127.0.0.1:8000/api/login', data)
       .then(res => {
-        console.log(res.status)
         if (res.status === 201) {
           sessionStorage.setItem('auth_token', res.data.token);
           sessionStorage.setItem('auth_name', res.data.user.email);

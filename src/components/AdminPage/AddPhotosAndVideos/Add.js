@@ -26,19 +26,20 @@ export const AddPhotosAndVideos = () => {
       var fsize = (file.size / 1024 / 1024).toFixed(2); 
       var t = file.type.split('/').pop().toLowerCase();
       if (t !== "jpeg" && t !== "jpg" && t !== "png" && t !== "bmp" && t !== "gif") {
-        setImagesError("Allowed formats are .jpeg, .jpg, .png, .bmp. .gif")
+        setImagesError("Allowed formats are .jpeg, .jpg, .png, .bmp, .gif")
         return;
       }
       if(fsize > 2) {
-        setImagesError("Maximum image size is 2mbs");
+        setImagesError("Maximum file size is 2mbs");
         return;
       }
       imagesArray.push(e.target.files[i]);
-      setImagesError("")
-      setImages(imagesArray)
+      setImagesError("");
+      setImages(imagesArray);
     }
   }
 
+  //function to clear video form after submission
   const clearVideoForm = () => {
     setTitle("");
     setDescription("");
@@ -55,12 +56,12 @@ export const AddPhotosAndVideos = () => {
     }
 
     if (!images.length) {
-      return
+      return;
     }
     axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie").then((response) => {
       axios
         .post("http://127.0.0.1:8000/api/photos", data, {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${token}` }
         })
         .then((response) => {
           console.log(response);
@@ -80,14 +81,12 @@ export const AddPhotosAndVideos = () => {
         return;
     }
     
-  const data = {
-    title: title,
-    description: description,
-    youtubeUrl: youtubeLink,
-    isFile: isFile,
-  };
-    
-    console.log(data)
+    const data = {
+      title: title,
+      description: description,
+      youtubeUrl: youtubeLink,
+      isFile: isFile,
+    };
 
     axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie").then((response) => {
       axios.post("http://127.0.0.1:8000/api/videos", data, {
@@ -98,7 +97,7 @@ export const AddPhotosAndVideos = () => {
           clearVideoForm();
           toast("Video uploaded")
         }).catch(err => err.message)
-    }).catch(err => console.log(err.message))
+    }).catch(err => console.log(err.message));
     
   };
 
@@ -172,18 +171,6 @@ export const AddPhotosAndVideos = () => {
                   />
                 </div>
 
-                {/* <div className="form-group">
-                  <label htmlFor="squareInput">Upload cover image</label>
-                  <input
-                    type="file"
-                    className="form-control input-square"
-                    id="squareInput"
-                    required
-                    placeholder="Enter the title here..."
-                    onChange={onChangeVideoImage}
-                  />
-                </div> */}
-
                 <div className="form-check mt-3">
                   <label>Type</label>
                   <br />
@@ -227,7 +214,7 @@ export const AddPhotosAndVideos = () => {
                     required
                     className="form-control input-pill"
                     id="pillInput"
-                    placeholder="Youtube link here"
+                    placeholder="Youtube link here..."
                     value={youtubeLink}
                     onChange={(e) => {
                       setYoutubeLink(e.target.value);
@@ -240,7 +227,7 @@ export const AddPhotosAndVideos = () => {
                 <div className="form-group" hidden={!video}>
                   <label>Upload a Video</label>{" "}
                   <br />
-                  <input type="file" className="form-control-file mt-4" />
+                  <input type="file" className="form-control mt-4" />
                 </div>
 
                 <div className="form-group">

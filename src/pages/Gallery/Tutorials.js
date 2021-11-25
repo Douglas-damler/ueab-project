@@ -10,7 +10,6 @@ export const AllTutorials = () => {
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/api/videos')
         .then((response) => {
-            console.log(response)
             setTutorials(response.data);
         }).catch((err) => console.log(err.message));
     },[])

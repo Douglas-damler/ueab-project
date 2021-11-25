@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Breadcrumb } from "react-bootstrap";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { faImages, faVideo, faUserCog } from "@fortawesome/free-solid-svg-icons";
 
 export const Dashboard = () => {
   
@@ -62,6 +63,7 @@ export const Dashboard = () => {
                 <div className="row">
                   <div className="col-5">
                     <div className="icon-big text-center">
+                      <FontAwesomeIcon className="dash-icon" icon={faImages} />
                     </div>
                   </div>
                   <div className="col-7 d-flex align-items-center">
@@ -81,6 +83,7 @@ export const Dashboard = () => {
                 <div className="row">
                   <div className="col-5">
                     <div className="icon-big text-center">
+                      <FontAwesomeIcon className="dash-icon" icon={faVideo} />
                     </div>
                   </div>
                   <div className="col-7 d-flex align-items-center">
@@ -93,32 +96,14 @@ export const Dashboard = () => {
               </div>
             </div>
           </div>
-          {/* <div className="col-md-3">
-            <div className="card card-stats bg-success">
-              <div className="card-body ">
-                <div className="row">
-                  <div className="col-5">
-                    <div className="icon-big text-center">
-                   
-                    </div>
-                  </div>
-                  <div className="col-7 d-flex align-items-center">
-                    <div className="numbers">
-                      <p className="card-category">Posted Photos</p>
-                      <h4 className="card-title">{photos.length}</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
+          
           <div className="col-md-3">
             <div className="card card-stats bg-primary">
               <div className="card-body ">
                 <div className="row">
                   <div className="col-5">
                     <div className="icon-big text-center">
-                    
+                      <FontAwesomeIcon className="dash-icon" icon={faUserCog} />
                     </div>
                   </div>
                   <div className="col-7 d-flex align-items-center">

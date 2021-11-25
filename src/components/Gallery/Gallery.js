@@ -26,16 +26,15 @@ export const Gallery = () => {
   useEffect(() => {
     axios.get("http://127.0.0.1:8000/api/photos").then((res) => {
       setImages(res.data.images);
-    });
+    }).catch((err) => console.log(err.message));
   }, []);
 
   const handleDeleteImage = (id) => {
     axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then((response) => {
       axios.delete(`http://127.0.0.1:8000/api/photos/${id}`, {headers: {Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`}})
       .then((response) => {
-        console.log(response)
-        toast.success("Image Deleted")
-      }).catch((err) => console.log(err.message))
+        toast.success("Image Deleted");
+      }).catch((err) => console.log(err.message));
     })
     
   }

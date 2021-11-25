@@ -12,7 +12,7 @@ export const Navigation = () => {
   return (
       <Navbar className="navbar-sticky" collapseOnSelect expand="lg" style={{background: "#3352a5"}} variant="light">
         <Container>
-          <Navbar.Brand style={{background: "none", border: "none", padding: "0"}} href="#home"><img className="logo" style={{height: "45px", borderBlock: "none"}} src={image} alt="ueab logo" /></Navbar.Brand>
+          <Navbar.Brand style={{background: "none", border: "none", padding: "0"}} to="/"><img className="logo" style={{height: "45px", borderBlock: "none"}} src={image} alt="ueab logo" /></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav" className="links">
                 <Nav className="me-auto">

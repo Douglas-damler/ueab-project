@@ -7,6 +7,7 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { rerender } from "../../features/signinSlice";
+import { toast } from "react-toastify";
 
 
 export const Sidebar = () => {
@@ -19,7 +20,7 @@ export const Sidebar = () => {
         .then((response) => {
             axios.get('http://127.0.0.1:8000/api/logout', {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
-                console.log(response);
+                toast.success(response.data.message)
             })
         }).catch((err) => console.log(err.message));
         sessionStorage.removeItem('auth_token');
