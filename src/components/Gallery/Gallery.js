@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faEllipsisV, faExpandArrowsAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Filesaver from 'file-saver';
 
 export const Gallery = () => {
   const [showModal, setShowModal] = useState(false);
@@ -34,22 +35,12 @@ export const Gallery = () => {
       .then((response) => {
         toast.success("Image Deleted");
       }).catch((err) => console.log(err.message));
-    })
-    
+    });
   }
 
-  async function downloadImage(imageSrc) {
-    const image = await fetch(imageSrc)
-    const imageBlog = await image.blob()
-    const imageURL = URL.createObjectURL(imageBlog)
-  
-    const link = document.createElement('a')
-    link.href = imageURL
-    link.download = 'image file name here'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
+  const downloadImage = (imagePath, name) => {
+    Filesaver(imagePath, name);
+  };
 
   return (
     <div refs="gallery-container" className="container-fluid gallery-container">
@@ -90,11 +81,22 @@ export const Gallery = () => {
                       aria-expanded="false"
                       icon={faEllipsisV}
                     />
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                      <button class="dropdown-item" type="button"> <FontAwesomeIcon className="dropdown-icon" icon={faDownload} /> Download</button>
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <button 
+                        className="dropdown-item" 
+                        type="button"
+                        onClick={() => {
+                          downloadImage(`http://127.0.0.1:8000/storage/${image.label}`, image.label)
+                        }}
+                        > 
+                        <FontAwesomeIcon 
+                          className="dropdown-icon" 
+                          icon={faDownload} 
+                      /> Download
+                      </button>
                       { sessionStorage.getItem("auth_token") ? (
                          <button 
-                          class="dropdown-item mt-0" 
+                          className="dropdown-item mt-0" 
                           id="dropdown-delete"onClick={(event) => {
                             handleDeleteImage(image.id)
                           }}
