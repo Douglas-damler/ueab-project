@@ -36,7 +36,7 @@ export const SearchResults = () => {
 
                 <div className="search-results-image">
                     <div>
-                        <img src={notfound} alt="not-found arts" />
+                        <img src={notfound} className="img-fluid" alt="not-found arts" />
                     </div>
                 </div>
             )

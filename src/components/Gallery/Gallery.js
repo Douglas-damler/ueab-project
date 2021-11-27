@@ -3,8 +3,7 @@ import { GalleryImage } from "../GalleryImage/GalleryImage";
 import { GalleryModal } from "../GalleryModal/GalleryModal";
 import "./Gallery.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExpandArrowsAlt } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faEllipsisV, faExpandArrowsAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -39,6 +38,19 @@ export const Gallery = () => {
     
   }
 
+  async function downloadImage(imageSrc) {
+    const image = await fetch(imageSrc)
+    const imageBlog = await image.blob()
+    const imageURL = URL.createObjectURL(imageBlog)
+  
+    const link = document.createElement('a')
+    link.href = imageURL
+    link.download = 'image file name here'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <div refs="gallery-container" className="container-fluid gallery-container">
       <div className="row">
@@ -61,22 +73,39 @@ export const Gallery = () => {
                 >
                   <FontAwesomeIcon icon={faExpandArrowsAlt} />
                 </span>
-                <div className="images-delete-button">
-                  { sessionStorage.getItem("auth_token") ? (
+
+                <p className="image-description">
+                  The University of Eastern Africa,
+                  The University of Eastern Africa,
+                </p>
+
+                <div className="dropdown-container">
+                  <div className="dropdown dropleft">
                     <FontAwesomeIcon 
-                      className="icon" 
-                      icon={faTrash} 
-                      style={{color: "red"}} 
-                      onClick={() => {
-                        handleDeleteImage(image.id)
-                      }}
+                      className="m-1  dropdown-toggle" 
+                      type="button" 
+                      id="dropdownMenu2" 
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      icon={faEllipsisV}
                     />
-                  ): (
-                    <></>
-                  )}
-                  
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <button class="dropdown-item" type="button"> <FontAwesomeIcon className="dropdown-icon" icon={faDownload} /> Download</button>
+                      { sessionStorage.getItem("auth_token") ? (
+                         <button 
+                          class="dropdown-item mt-0" 
+                          id="dropdown-delete"onClick={(event) => {
+                            handleDeleteImage(image.id)
+                          }}
+                          type="button"><FontAwesomeIcon 
+                          className="dropdown-icon" 
+                          icon={faTrash}
+                         /> Delete</button>
+                      ) : (<></>)}
+                    </div>
+                    </div>
                 </div>
-              
               </div>
             </div>
           );

@@ -16,6 +16,7 @@ export const AddPhotosAndVideos = () => {
   const [ images, setImages ] = useState([]);
   const [ imagesError, setImagesError ] = useState('');
   const [ linkError, setLinkError ] = useState('');
+  const [ imageDescription, setImageDescription ] = useState('');
  
   const token = sessionStorage.getItem("auth_token");
 
@@ -30,7 +31,7 @@ export const AddPhotosAndVideos = () => {
         return;
       }
       if(fsize > 2) {
-        setImagesError("Maximum file size is 2mbs");
+        setImagesError("Maximum file size is 2 mbs");
         return;
       }
       imagesArray.push(e.target.files[i]);
@@ -139,6 +140,21 @@ export const AddPhotosAndVideos = () => {
                 />
                 <br/>
                 <small style={{color:"red"}}>{imagesError}</small>
+
+                <div className="form-group">
+                  <label htmlFor="comment">Short Descriptionr(optional)</label>
+                  <textarea
+                    className="form-control"
+                    rows="2"
+                    minLength="5"
+                    maxLength= "50"
+                    value={imageDescription}
+                    onChange={(e) => {
+                      setImageDescription(e.target.value);
+                    }}
+                  ></textarea>
+                </div>
+
                 <div className="card-action mt-3">
                   <button type="submit" className="btn btn-success mr-4">
                     Submit

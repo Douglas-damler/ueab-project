@@ -40,6 +40,10 @@
     cursor: pointer;
 }
 
+.holds-the-iframe {
+    background:url(../../images/loader.gif) center center no-repeat;
+  }
+
 @keyframes spin {
     0% { transform: rotate(0deg);}
     100% { transform: rotate(360deg);}
@@ -48,5 +52,9 @@
 @media only screen and (max-width:720px) {
     .video-player {
         width: 90%;
+    }
+    .user-table {
+        overflow:auto;
+        display:block;
     }
 }

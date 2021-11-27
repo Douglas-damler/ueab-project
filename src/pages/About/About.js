@@ -1,6 +1,8 @@
 import React from 'react';
 import './About.css';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMailBulk, faVoicemail } from '@fortawesome/free-solid-svg-icons';
 
 export const About = () => {
     return (
@@ -48,9 +50,9 @@ export const About = () => {
                     <p>The University of Eastern Africa, Baraton is a private coeducational Seventh-day Adventist university located in Baraton, about 50 km from Eldoret Kenya. It offers degrees in graduate and undergraduate programs in the fields of Business, the Humanities, Agriculture, Technology, Health Sciences and Education</p>
                         <div className=""> 
                             <a href="https://www.facebook.com/"><i id="social-fb" className="fa fa-facebook-square fa-3x social"></i></a>
-                            <a href="https://twitter.com/"><i id="social-tw" className="fa fa-twitter-square fa-3x social"></i></a>
+                            <a href="https://twitter.com/"><FontAwesomeIcon icon={faMailBulk}/></a>
                             <a href="https://plus.google.com/"><i id="social-gp" className="fa fa-google-plus-square fa-3x social"></i></a>
-                            <a href="mailto:bootsnipp@gmail.com"><i id="social-em" className="fa fa-envelope-square fa-3x social"></i></a>
+                            <a href="mailto:bootsnipp@gmail.com"><FontAwesomeIcon icon={faVoicemail}/></a>
                     </div>	
                 </div>
                 <div className="col-md-3 footer-two">

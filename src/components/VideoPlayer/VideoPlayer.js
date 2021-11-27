@@ -39,13 +39,14 @@ export const VideoPlayer = () => {
   ) : tutorial.youtubeUrl ? (
     <div className="video-player">
       <h3 className="pt-5">{tutorial ? `${tutorial.title}` : ""}</h3>
-
+      <div class="holds-the-iframe">
       <ReactPlayer
         className="react-player"
         width="100%"
         controls={true}
         url={tutorial.youtubeUrl}
       />
+      </div>
       <div className="delete-container">
         {sessionStorage.hasOwnProperty("auth_token") ? (
           <FontAwesomeIcon 

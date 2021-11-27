@@ -23,7 +23,7 @@ export const Contact = () => {
         </div>
         <div className="side-content px-5 py-3 text-light">
           <p className="lead">General Support</p>
-          <p className="text-success">elearningsupport@ueab.ac.ke</p>
+          <a className="text-success" href="mailto:elearningsupport@ueab.ac.ke">elearningsupport@ueab.ac.ke</a>
         </div>
       </div>
       <div className="col-md-6 bg-light p-5">

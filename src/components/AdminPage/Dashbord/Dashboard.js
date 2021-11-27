@@ -53,7 +53,7 @@ export const Dashboard = () => {
         </div>
 
         <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 className="h2">Admin Dashboard</h1>
+          <h1 className="h2 p-2">Admin Dashboard</h1>
         </div>
 
         <div className="row mb-3">
@@ -126,7 +126,7 @@ export const Dashboard = () => {
                   <div className="card-title">List of Admins</div>
                 </div>
                 <div className="card-body">
-                  <table className="table table-hover">
+                  <table className="table table-hover user-table">
                     <thead>
                       <tr>
                         <th scope="col">#</th>

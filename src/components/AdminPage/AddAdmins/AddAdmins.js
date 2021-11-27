@@ -96,13 +96,13 @@ export const AddAdmins = () => {
               <Breadcrumb.Item active>Dashboard</Breadcrumb.Item>
               <Breadcrumb.Item>Admins List</Breadcrumb.Item>
             </Breadcrumb>
-            <h4>Admins List</h4>
+            <h4 className="p-2">Admins List</h4>
           </div>
         </div>
         <div className="btn-toolbar mb-2 mb-md-0">
           <Button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary ml-2"
             data-toggle="modal"
             data-target="#exampleModal"
           >
@@ -112,10 +112,10 @@ export const AddAdmins = () => {
 
         <Card
           border="light"
-          className="table-wrapper table-responsive shadow-sm mt-3"
+          className="table-wrapper shadow-sm mt-3"
         >
           <Card.Body>
-            <Table className="user-table align-items-center">
+            <Table className="user-table align-items-center table-hover">
               <thead>
                 <tr>
                   <th className="border-bottom">#</th>
