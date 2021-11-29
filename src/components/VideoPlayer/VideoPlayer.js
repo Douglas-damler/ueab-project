@@ -37,9 +37,10 @@ export const VideoPlayer = () => {
       <div className="loader "></div>
     </div>
   ) : tutorial.youtubeUrl ? (
-    <div className="video-player">
-      <h3 className="pt-5">{tutorial ? `${tutorial.title}` : ""}</h3>
-      <div class="holds-the-iframe">
+    <div className=" container">
+    <div className="video-player row">
+      <h3 className="pt-5 col-12">{tutorial ? `${tutorial.title}` : ""}</h3>
+      <div class="holds-the-iframe col-md-9">
       <ReactPlayer
         className="react-player"
         width="100%"
@@ -47,21 +48,11 @@ export const VideoPlayer = () => {
         url={tutorial.youtubeUrl}
       />
       </div>
-      {/* <div className="delete-container">
-        {sessionStorage.hasOwnProperty("auth_token") ? (
-          <FontAwesomeIcon 
-          id="delete" 
-          onClick={() => {
-            handleDeleteVideo(tutorial.id)
-          }} 
-          className="vicon" 
-          icon={faTrash} />
-        ): (<></>)}
-      </div> */}
-      <div className="video-description mt-3">
+      <div className="video-description mt-3 col-md-3">
         <h5>Video description</h5>
         <p>{tutorial.description}</p>
       </div>
+    </div>
     </div>
   ) : (
     <div className="video-player">

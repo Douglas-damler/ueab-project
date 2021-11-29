@@ -55,13 +55,17 @@ export const AddPhotosAndVideos = () => {
     for (let i = 0; i < images.length; i++) {
       data.append("photos[]", images[i]);
     }
+    
+    const description = {
+      description: imageDescription
+    }
 
     if (!images.length) {
       return;
     }
     axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie").then((response) => {
       axios
-        .post("http://127.0.0.1:8000/api/photos", data, {
+        .post("http://127.0.0.1:8000/api/photos", {data, description: description}, {
           headers: { Authorization: `Bearer ${token}` }
         })
         .then((response) => {
