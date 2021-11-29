@@ -60,12 +60,14 @@ export const AddPhotosAndVideos = () => {
       description: imageDescription
     }
 
+    data.append("description", description)
+
     if (!images.length) {
       return;
     }
     axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie").then((response) => {
       axios
-        .post("http://127.0.0.1:8000/api/photos", {data, description: description}, {
+        .post("http://127.0.0.1:8000/api/photos",data, {
           headers: { Authorization: `Bearer ${token}` }
         })
         .then((response) => {
