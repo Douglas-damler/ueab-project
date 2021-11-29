@@ -55,12 +55,8 @@ export const AddPhotosAndVideos = () => {
     for (let i = 0; i < images.length; i++) {
       data.append("photos[]", images[i]);
     }
-    
-    const description = {
-      description: imageDescription
-    }
 
-    data.append("description", description)
+    data.append("description", imageDescription)
 
     if (!images.length) {
       return;

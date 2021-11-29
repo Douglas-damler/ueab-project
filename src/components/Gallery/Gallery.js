@@ -66,7 +66,7 @@ export const Gallery = () => {
                   <FontAwesomeIcon icon={faExpandArrowsAlt} />
                 </span>
 
-                <p className="image-description">{image.description}</p>
+                <p className="image-description mt-1">{image.description}</p>
 
                 <div className="dropdown-container">
                   <div className="dropdown dropleft">
