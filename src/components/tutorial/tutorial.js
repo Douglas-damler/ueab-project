@@ -22,7 +22,6 @@ export const Tutorial = (props) => {
                 <div className="card-meta">
                     <p className="tutorial-description">{props.tutorial.description.substring(0, 160)}</p>
                 </div>
-                    <FontAwesomeIcon icon = {faEllipsisH} />
                 </div>
             </div>
         </Link>

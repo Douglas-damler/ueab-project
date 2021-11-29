@@ -1,13 +1,16 @@
 .contact-container {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
 }
 .side-content-container {
     background:linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) ),url('https://registration.ueab.ac.ke/assets/landing/images/slider/landing/admin-block-ueab.png'); 
     background-repeat: no-repeat; 
-    height: 100vh; 
+    height: 91.87vh; 
     background-size: cover; 
 }
 .side-content {
-    margin: 10%;
+    margin:10%;
+}
+.map {
+    height: 91.87vh;
 }

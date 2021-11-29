@@ -2,93 +2,36 @@ import React, { useState } from "react";
 import "./Contact.css";
 
 export const Contact = () => {
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   return (
-    <div className="contact-container row pt-4">
+    <div className="contact-container row pt-1">
       <div className="side-content-container col-md-6 pt-5">
-        <div className="side-content px-5 py-3 text-light">
+        <div className="side-content px-2 py-3 text-light">
           <p className="lead">Address</p>
           <p>Baraton University, Administration Building ground floor</p>
         </div>
-        <div className="side-content px-5 py-3 text-light">
+        <div className="side-content px-2 py-3 text-light">
           <p className="lead">Let's Talk</p>
           <p className="text-success">+254 7000000001</p>
         </div>
-        <div className="side-content px-5 py-3 text-light">
+        <div className="side-content px-2 py-3 text-light">
           <p className="lead">General Support</p>
-          <a className="text-success" href="mailto:elearningsupport@ueab.ac.ke">elearningsupport@ueab.ac.ke</a>
+          <p><small><i>Click the link below to open your default email client application</i></small></p>
+          <a className="text-success" href="mailto:elearningsupport@ueab.ac.ke">
+            elearningsupport@ueab.ac.ke
+          </a>
         </div>
       </div>
-      <div className="col-md-6 bg-light p-5">
-        <p className="display-6">Send Us A Message.</p>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group m-md-3 p-1">
-            <label htmlFor="email" className="my-2">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              aria-describedby="email"
-              placeholder="Enter Email"
-              required
-              value={email}
-              onChange={(event) => {
-                setEmail(event.target.value);
-              }}
-            />
-            <small id="email" className="form-text text-muted">
-              We'll never share your email with anyone else.
-            </small>
-          </div>
-          <div className="form-group m-md-3 p-md-1">
-            <label htmlFor="subject" className="my-2">
-              Subject
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="subject"
-              placeholder="Subject"
-              maxLength="50"
-              minLength="10"
-              required
-              value={subject}
-              onChange={(event) => {
-                setSubject(event.target.value);
-              }}
-            />
-          </div>
-          <div className="form-group m-md-3 p-md-1">
-            <label htmlFor="message" className="my-2">
-              Message
-            </label>
-            <textarea
-              rows="5"
-              type="text"
-              className="form-control"
-              id="message"
-              placeholder="Your Message"
-              minLength="0"
-              maxLength="200"
-              value={message}
-              onChange={(event) => {
-                setMessage(event.target.value);
-              }}
-            ></textarea>
-          </div>
-          <button type="submit" className="btn btn-success m-3">
-            SEND MESSAGE
-          </button>
-        </form>
+      <div className="col-md-6 bg-light">
+        <div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3989.783554938522!2d35.0667562!3d0.2391856!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x17805d9e8ad5483f%3A0x1ea8eefbedcf8e3a!2sUniversity%20of%20Eastern%20Africa%2C%20Baraton!5e0!3m2!1sen!2ske!4v1638186931896!5m2!1sen!2ske"
+            width="100%"
+            className="map"
+            style={{border:0}}
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
       </div>
     </div>
   );
