@@ -42,7 +42,17 @@
 
 .holds-the-iframe {
     background:url(../../images/loader.gif) center center no-repeat;
-  }
+}
+
+.video-description {
+    position: absolute;
+    width: 16%;
+    top: 105px;
+    left: 77%;
+    float: right;
+}
+
+
 
 @keyframes spin {
     0% { transform: rotate(0deg);}
@@ -52,9 +62,15 @@
 @media only screen and (max-width:720px) {
     .video-player {
         width: 90%;
+        text-align: center;
     }
     .user-table {
         overflow:auto;
         display:block;
+    }
+
+    .video-description {
+        width: 100%;
+        top: 40;
     }
 }

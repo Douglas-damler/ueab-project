@@ -102,6 +102,7 @@ export const Gallery = () => {
                           }}
                           type="button"><FontAwesomeIcon 
                           className="dropdown-icon" 
+                          style={{color: "red"}}
                           icon={faTrash}
                          /> Delete</button>
                       ) : (<></>)}

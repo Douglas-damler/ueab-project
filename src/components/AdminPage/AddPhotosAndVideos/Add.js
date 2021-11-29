@@ -7,7 +7,7 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 
 export const AddPhotosAndVideos = () => {
-  const [link, setLink ] = useState(false);
+  const [ link, setLink ] = useState(false);
   const [ video, setVideo ] = useState(false);
   const [ title, setTitle ] = useState("");
   const [ youtubeLink, setYoutubeLink ] = useState("");
@@ -65,7 +65,6 @@ export const AddPhotosAndVideos = () => {
           headers: { Authorization: `Bearer ${token}` }
         })
         .then((response) => {
-          console.log(response);
           toast.success("Images Uploaded");
           setImages([]);
           setImagesError("");

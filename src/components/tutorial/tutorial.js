@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './tutorial.css';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Tutorial = (props) => {
     
@@ -18,9 +20,9 @@ export const Tutorial = (props) => {
                     <h3>{props.tutorial.title}</h3>
                 </div>
                 <div className="card-meta">
-                    <p className="tutorial-description">{props.tutorial.description}</p>
+                    <p className="tutorial-description">{props.tutorial.description.substring(0, 160)}</p>
                 </div>
-                {/* <p className="tutorialAuthor">by <a href={'' || '#'}>{'' || 'Elearning-team'}</a></p> */}
+                    <FontAwesomeIcon icon = {faEllipsisH} />
                 </div>
             </div>
         </Link>

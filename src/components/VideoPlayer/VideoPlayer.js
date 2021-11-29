@@ -47,7 +47,7 @@ export const VideoPlayer = () => {
         url={tutorial.youtubeUrl}
       />
       </div>
-      <div className="delete-container">
+      {/* <div className="delete-container">
         {sessionStorage.hasOwnProperty("auth_token") ? (
           <FontAwesomeIcon 
           id="delete" 
@@ -57,6 +57,10 @@ export const VideoPlayer = () => {
           className="vicon" 
           icon={faTrash} />
         ): (<></>)}
+      </div> */}
+      <div className="video-description mt-3">
+        <h5>Video description</h5>
+        <p>{tutorial.description}</p>
       </div>
     </div>
   ) : (

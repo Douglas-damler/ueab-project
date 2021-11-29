@@ -61,7 +61,6 @@ export const About = () => {
                     <h5>Helpful Links </h5>
                     <ul className="footer-links">
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/about">About</Link></li>
                         <li><Link to="/contacts">Contact</Link></li>
                         <li><a className="" href="https://ielearning.ueab.ac.ke/" target="_blank" rel="noreferrer">E-learning</a></li>
                     </ul>

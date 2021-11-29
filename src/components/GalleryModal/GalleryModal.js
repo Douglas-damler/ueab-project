@@ -10,14 +10,13 @@ export const GalleryModal = (props) => {
 
     return (
         <div
-            isOpen={props.isOpen}
             className="modal-overlay"
             onClick={props.onClick}
             name={props.name}
         >
-            <div className="modal-body">
+            <div className="modal-body modal-image">
                 <i className="modal-close" onClick={props.onClick}><span><FontAwesomeIcon className="close-icon" icon={faTimes} /></span></i>
-                <img src={props.src} alt="" />
+                <img className="image-fluid" style={{maxWidth: "100%", height: "auto"}} src={props.src} alt="" />
             </div>
 
         </div>
