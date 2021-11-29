@@ -53,7 +53,21 @@ export const VideoPlayer = () => {
         <p>{tutorial.description}</p>
       </div>
     </div>
+     <div className="delete-container">
+        {sessionStorage.hasOwnProperty("auth_token") ? (
+          <div>
+          <FontAwesomeIcon 
+          id="delete" 
+          onClick={() => {
+            handleDeleteVideo(tutorial.id)
+          }} 
+          className="vicon" 
+          icon={faTrash}/> <span>Delete</span>
+          </div>
+        ): (<></>)}
+      </div>
     </div>
+    
   ) : (
     <div className="video-player">
       <p>

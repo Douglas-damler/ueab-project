@@ -26,6 +26,7 @@ export const Gallery = () => {
   useEffect(() => {
     axios.get("http://127.0.0.1:8000/api/photos").then((res) => {
       setImages(res.data.images);
+      console.log(res.data.images)
     }).catch((err) => console.log(err.message));
   }, []);
 
@@ -65,10 +66,7 @@ export const Gallery = () => {
                   <FontAwesomeIcon icon={faExpandArrowsAlt} />
                 </span>
 
-                <p className="image-description">
-                  The University of Eastern Africa,
-                  The University of Eastern Africa,
-                </p>
+                <p className="image-description">{image.description}</p>
 
                 <div className="dropdown-container">
                   <div className="dropdown dropleft">
