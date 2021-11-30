@@ -4,78 +4,88 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./AddAdmins.css";
 import axios from "axios";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { domain } from "../../../app/utilities";
 
 toast.configure();
 
 export const AddAdmins = () => {
-  const [ users, setUsers ] = useState([]);
-  const [ update, setUpdate ] = useState(false);
-  const [ remove, setRemove ] = useState(false);
-  const [ email, setEmail ] = useState('');
-  const [ password, setPassword ] = useState('');
-  const [ confirm, setConfirm ] = useState('');
+  const [users, setUsers] = useState([]);
+  const [update, setUpdate] = useState(false);
+  const [remove, setRemove] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
 
-  const token = sessionStorage.getItem('auth_token');
+  const token = sessionStorage.getItem("auth_token");
 
   useEffect(() => {
     axios
-    .get("http://127.0.0.1:8000/sanctum/csrf-cookie")
-    .then((response) => {
+      .get(`${domain}sanctum/csrf-cookie`)
+      .then((response) => {
+        axios
+          .get(`${domain}api/users`, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((response) => {
+            setUsers(response.data);
+          })
+          .catch((err) => console.log(err.message));
+      })
+      .catch((err) => console.log(err.message));
+  }, [update, token, remove]);
+
+  const handleRemoveAdmin = (id) => {
+    if (id === 1) {
+      toast.error("You cannot remove the initial admin");
+      return;
+    }
+    if (id.toString() === sessionStorage.getItem("id")) {
+      toast.error(
+        "You cannot remove Yourself, Please ask another admin to remove you."
+      );
+      return;
+    }
+    if (!token) {
+      return;
+    }
+    axios.get(`${domain}sanctum/csrf-cookie`).then((response) => {
       axios
-        .get("http://127.0.0.1:8000/api/users", {
+        .delete(`${domain}api/users/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          setUsers(response.data);
-        }).catch(err => console.log(err.message))
-    }).catch(err => console.log(err.message))
-  },[update, token, remove]);
-
-
-  const handleRemoveAdmin = (id) => {
-      if (id === 1) {
-        toast.error("You cannot remove the initial admin")
-        return
-      }
-      if (id.toString() === sessionStorage.getItem("id"))
-      {
-        toast.error("You cannot remove Yourself, Please ask another admin to remove you.")
-        return
-      }
-      if (!token) {
-        return
-      }
-      axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then(response => {
-      axios.delete(`http://127.0.0.1:8000/api/users/${id}`, {headers: {Authorization: `Bearer ${token}`}})
-      .then((response) =>{
-        setRemove(true)
-        toast.success("User Removed")
-      } 
-      ).catch(err => console.log(err.message))
+          setRemove(true);
+          toast.success("User Removed");
+        })
+        .catch((err) => console.log(err.message));
     });
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = {
       email: email,
       password: password,
-      password_confirmation: confirm
-    }
+      password_confirmation: confirm,
+    };
 
-    axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then(response => {
-      axios.post('http://127.0.0.1:8000/api/users',data,{headers: {Authorization: `Bearer ${token}`}})
-      .then((response) => {
-        setUpdate(true)
-        toast.success("User Registered")
-        setEmail("")
-        setConfirm("")
-        setPassword("")
-      }).catch((error) => {
-        toast.error("Probably a duplicated email or unmatching passwords")
-      });
+    axios.get(`${domain}sanctum/csrf-cookie`).then((response) => {
+      axios
+        .post(`${domain}api/users`, data, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          setUpdate(true);
+          toast.success("User Registered");
+          setEmail("");
+          setConfirm("");
+          setPassword("");
+        })
+        .catch((error) => {
+          toast.error("Probably a duplicated email or unmatching passwords");
+        });
     });
   };
 
@@ -107,13 +117,10 @@ export const AddAdmins = () => {
             data-target="#exampleModal"
           >
             <FontAwesomeIcon icon={faPlus} className="me-2" /> Add New Admin
-          </Button>   
+          </Button>
         </div>
 
-        <Card
-          border="light"
-          className="table-wrapper shadow-sm mt-3"
-        >
+        <Card border="light" className="table-wrapper shadow-sm mt-3">
           <Card.Body>
             <Table className="user-table align-items-center table-hover">
               <thead>
@@ -132,12 +139,14 @@ export const AddAdmins = () => {
                     <td>{user.email}</td>
                     <td>{user.created_at.split("T")[0]}</td>
                     <td>{user.created_at.split("T")[1].split(".")[0]}</td>
-                    <td 
+                    <td
                       className="remove"
                       onClick={() => {
-                        handleRemoveAdmin(user.id)
+                        handleRemoveAdmin(user.id);
                       }}
-                    >Remove</td>
+                    >
+                      Remove
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -153,7 +162,11 @@ export const AddAdmins = () => {
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <form onSubmit={handleSubmit} className="modal-dialog" role="document">
+          <form
+            onSubmit={handleSubmit}
+            className="modal-dialog"
+            role="document"
+          >
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
@@ -167,8 +180,8 @@ export const AddAdmins = () => {
                     <input
                       type="email"
                       value={email}
-                      onChange = {(e) => {
-                        setEmail(e.target.value)
+                      onChange={(e) => {
+                        setEmail(e.target.value);
                       }}
                       className="form-control form-control"
                       id="largeInput"
@@ -199,8 +212,8 @@ export const AddAdmins = () => {
                       className="form-control form-control"
                       placeholder="Password"
                       value={confirm}
-                      onChange = {(e) => {
-                        setConfirm(e.target.value)
+                      onChange={(e) => {
+                        setConfirm(e.target.value);
                       }}
                       required
                       minLength="8"

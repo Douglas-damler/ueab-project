@@ -6,6 +6,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
+import { domain } from "../../app/utilities";
 
 export const VideoPlayer = () => {
   const [loading, setLoading] = useState(true);
@@ -14,8 +15,8 @@ export const VideoPlayer = () => {
   const history = useHistory();
   
   const handleDeleteVideo = (id) => {
-    axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then((response) => {
-      axios.delete(`http://127.0.0.1:8000/api/videos/${id}`, {headers: {Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`}})
+    axios.get(`${domain}sanctum/csrf-cookie`).then((response) => {
+      axios.delete(`${domain}api/videos/${id}`, {headers: {Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`}})
       .then((response) => {
         console.log(response)
         toast.success("Video Deleted");
@@ -25,7 +26,7 @@ export const VideoPlayer = () => {
   }
 
   useEffect(() => {
-    axios.get(`http://127.0.01:8000/api/videos/${id}`)
+    axios.get(`${domain}api/videos/${id}`)
     .then((response) => {
       setTutorial(response.data.data)
       setLoading(false)

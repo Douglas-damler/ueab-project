@@ -23,73 +23,73 @@ function App() {
     <Router>
       <Navigation />
       <div className="main-container mt-5">
-      <Switch>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route path="/tutorials/:id">
-          <VideoPlayer />
-        </Route>
-        <Route exact path="/search-results">
-          <SearchResults />
-        </Route>
-        <Route exact path="/tutorials">
-          <AllTutorials />
-        </Route>
+        <Switch>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route path="/tutorials/:id">
+            <VideoPlayer />
+          </Route>
+          <Route exact path="/search-results">
+            <SearchResults />
+          </Route>
+          <Route exact path="/tutorials">
+            <AllTutorials />
+          </Route>
 
-        <Route exact path="/contacts">
-          <Contact />
-        </Route>
+          <Route exact path="/contacts">
+            <Contact />
+          </Route>
 
-        <Route exact path="/gallery">
-          <Gallery />
-        </Route>
+          <Route exact path="/gallery">
+            <Gallery />
+          </Route>
 
-        <Route exact path="/sign-in">
-          <SignIn />
-        </Route>
+          <Route exact path="/sign-in">
+            <SignIn />
+          </Route>
 
-        <Route exact path="/admin/dashboard">
-          {isAunthenticated ? (
-            <>
-              <Sidebar />
-              <Dashboard />
-            </>
-          ) : (
-            <Redirect to="/sign-in" />
-          )}
-        </Route>
+          <Route exact path="/admin/dashboard">
+            {isAunthenticated ? (
+              <>
+                <Sidebar />
+                <Dashboard />
+              </>
+            ) : (
+              <Redirect to="/sign-in" />
+            )}
+          </Route>
 
-        <Route exact path="/admin/add-new-admins">
-          {isAunthenticated ? (
-            <>
-              <Sidebar />
-              <AddAdmins />
-            </>
-          ) : (
-            <Redirect to="/sign-in" />
-          )}
-        </Route>
+          <Route exact path="/admin/add-new-admins">
+            {isAunthenticated ? (
+              <>
+                <Sidebar />
+                <AddAdmins />
+              </>
+            ) : (
+              <Redirect to="/sign-in" />
+            )}
+          </Route>
 
-        <Route exact path="/admin/add-photos-and-videos">
-          {isAunthenticated ? (
-            <>
-              <Sidebar />
-              <AddPhotosAndVideos />
-            </>
-          ) : (
-            <Redirect to="/sign-in" />
-          )}
-        </Route>
+          <Route exact path="/admin/add-photos-and-videos">
+            {isAunthenticated ? (
+              <>
+                <Sidebar />
+                <AddPhotosAndVideos />
+              </>
+            ) : (
+              <Redirect to="/sign-in" />
+            )}
+          </Route>
 
-        <Route exact path="/">
-          <Home />
-        </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
 
-        <Route>
-          <NotFound />
-        </Route>
-      </Switch>
+          <Route>
+            <NotFound />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );

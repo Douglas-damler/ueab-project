@@ -4,33 +4,40 @@ import { Breadcrumb } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import { domain } from "../../../app/utilities";
 
 export const AddPhotosAndVideos = () => {
-  const [ link, setLink ] = useState(false);
-  const [ video, setVideo ] = useState(false);
-  const [ title, setTitle ] = useState("");
-  const [ youtubeLink, setYoutubeLink ] = useState("");
-  const [ description, setDescription ] = useState("");
-  const [ isFile, setIsFile ] = useState(false);
-  const [ images, setImages ] = useState([]);
-  const [ imagesError, setImagesError ] = useState('');
-  const [ linkError, setLinkError ] = useState('');
-  const [ imageDescription, setImageDescription ] = useState('');
- 
+  const [link, setLink] = useState(false);
+  const [video, setVideo] = useState(false);
+  const [title, setTitle] = useState("");
+  const [youtubeLink, setYoutubeLink] = useState("");
+  const [description, setDescription] = useState("");
+  const [isFile, setIsFile] = useState(false);
+  const [images, setImages] = useState([]);
+  const [imagesError, setImagesError] = useState("");
+  const [linkError, setLinkError] = useState("");
+  const [imageDescription, setImageDescription] = useState("");
+
   const token = sessionStorage.getItem("auth_token");
 
   function onChangeImages(e) {
     const imagesArray = [];
     for (let i = 0; i < e.target.files.length; i++) {
       var file = e.target.files[i];
-      var fsize = (file.size / 1024 / 1024).toFixed(2); 
-      var t = file.type.split('/').pop().toLowerCase();
-      if (t !== "jpeg" && t !== "jpg" && t !== "png" && t !== "bmp" && t !== "gif") {
-        setImagesError("Allowed formats are .jpeg, .jpg, .png, .bmp, .gif")
+      var fsize = (file.size / 1024 / 1024).toFixed(2);
+      var t = file.type.split("/").pop().toLowerCase();
+      if (
+        t !== "jpeg" &&
+        t !== "jpg" &&
+        t !== "png" &&
+        t !== "bmp" &&
+        t !== "gif"
+      ) {
+        setImagesError("Allowed formats are .jpeg, .jpg, .png, .bmp, .gif");
         return;
       }
-      if(fsize > 2) {
+      if (fsize > 2) {
         setImagesError("Maximum file size is 2 mbs");
         return;
       }
@@ -47,7 +54,7 @@ export const AddPhotosAndVideos = () => {
     setIsFile(false);
     setYoutubeLink("");
     setLinkError("");
-  }
+  };
 
   const handleSubmitImages = (event) => {
     event.preventDefault();
@@ -56,33 +63,37 @@ export const AddPhotosAndVideos = () => {
       data.append("photos[]", images[i]);
     }
 
-    data.append("description", imageDescription)
+    data.append("description", imageDescription);
 
     if (!images.length) {
       return;
     }
-    axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie").then((response) => {
-      axios
-        .post("http://127.0.0.1:8000/api/photos",data, {
-          headers: { Authorization: `Bearer ${token}` }
-        })
-        .then((response) => {
-          toast.success("Images Uploaded");
-          setImages([]);
-          setImagesError("");
-          
-        }).catch(err => err.message)
-    }).catch(err => err.message)
+    axios
+      .get(`${domain}sanctum/csrf-cookie`)
+      .then((response) => {
+        axios
+          .post(`${domain}api/photos`, data, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((response) => {
+            toast.success("Images Uploaded");
+            setImages([]);
+            setImagesError("");
+          })
+          .catch((err) => err.message);
+      })
+      .catch((err) => err.message);
   };
 
   const handleSubmitVideos = (event) => {
     event.preventDefault();
-    var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-    if(!youtubeLink.match(regExp)){
-        setLinkError("Please Enter a valid youtube link");
-        return;
+    var regExp =
+      /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    if (!youtubeLink.match(regExp)) {
+      setLinkError("Please Enter a valid youtube link");
+      return;
     }
-    
+
     const data = {
       title: title,
       description: description,
@@ -90,17 +101,21 @@ export const AddPhotosAndVideos = () => {
       isFile: isFile,
     };
 
-    axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie").then((response) => {
-      axios.post("http://127.0.0.1:8000/api/videos", data, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((response) => {
-          console.log(response);
-          clearVideoForm();
-          toast("Video uploaded")
-        }).catch(err => err.message)
-    }).catch(err => console.log(err.message));
-    
+    axios
+      .get(`${domain}sanctum/csrf-cookie`)
+      .then((response) => {
+        axios
+          .post(`${domain}api/videos`, data, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((response) => {
+            console.log(response);
+            clearVideoForm();
+            toast("Video uploaded");
+          })
+          .catch((err) => err.message);
+      })
+      .catch((err) => console.log(err.message));
   };
 
   return (
@@ -139,23 +154,21 @@ export const AddPhotosAndVideos = () => {
                   onChange={onChangeImages}
                   multiple
                 />
-                <br/>
-                <small style={{color:"red"}}>{imagesError}</small>
-
+                <br />
+                <small style={{ color: "red" }}>{imagesError}</small>
                 <div className="form-group">
                   <label htmlFor="comment">Short Descriptionr(optional)</label>
                   <textarea
                     className="form-control"
                     rows="2"
                     minLength="5"
-                    maxLength= "50"
+                    maxLength="50"
                     value={imageDescription}
                     onChange={(e) => {
                       setImageDescription(e.target.value);
                     }}
                   ></textarea>
                 </div>
-
                 <div className="card-action mt-3">
                   <button type="submit" className="btn btn-success mr-4">
                     Submit
@@ -176,8 +189,8 @@ export const AddPhotosAndVideos = () => {
                   <input
                     type="text"
                     required
-                    minLength = "5"
-                    maxLength = "100"
+                    minLength="5"
+                    maxLength="100"
                     className="form-control input-square"
                     id="squareInput"
                     placeholder="Enter the title here..."
@@ -237,13 +250,12 @@ export const AddPhotosAndVideos = () => {
                       setYoutubeLink(e.target.value);
                     }}
                   />
-              
+
                   <small>{linkError}</small>
                 </div>
 
                 <div className="form-group" hidden={!video}>
-                  <label>Upload a Video</label>{" "}
-                  <br />
+                  <label>Upload a Video</label> <br />
                   <input type="file" className="form-control mt-4" />
                 </div>
 

@@ -7,6 +7,7 @@ import { faDownload, faEllipsisV, faExpandArrowsAlt, faTrash } from "@fortawesom
 import axios from "axios";
 import { toast } from "react-toastify";
 import Filesaver from 'file-saver';
+import { domain } from "../../app/utilities";
 
 export const Gallery = () => {
   const [showModal, setShowModal] = useState(false);
@@ -24,15 +25,15 @@ export const Gallery = () => {
   };
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/photos").then((res) => {
+    axios.get(`${domain}api/photos`).then((res) => {
       setImages(res.data.images);
       console.log(res.data.images)
     }).catch((err) => console.log(err.message));
   }, []);
 
   const handleDeleteImage = (id) => {
-    axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then((response) => {
-      axios.delete(`http://127.0.0.1:8000/api/photos/${id}`, {headers: {Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`}})
+    axios.get(`${domain}sanctum/csrf-cookie`).then((response) => {
+      axios.delete(`${domain}api/photos/${id}`, {headers: {Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`}})
       .then((response) => {
         toast.success("Image Deleted");
       }).catch((err) => console.log(err.message));
@@ -52,7 +53,7 @@ export const Gallery = () => {
               <div className="gallery-card">
                 <GalleryImage
                   className="gallery-thumbnail"
-                  src={`http://127.0.0.1:8000/storage/${image.label}`}
+                  src={`${domain}storage/${image.label}`}
                   alt={"Image number " + image.label}
                 />
 
@@ -60,7 +61,7 @@ export const Gallery = () => {
                   className="card-icon-open"
                   value={url}
                   onClick={(e) =>
-                    openModal(`http://127.0.0.1:8000/storage/${image.label}`, e)
+                    openModal(`${domain}storage/${image.label}`, e)
                   }
                 >
                   <FontAwesomeIcon icon={faExpandArrowsAlt} />
@@ -84,7 +85,7 @@ export const Gallery = () => {
                         className="dropdown-item" 
                         type="button"
                         onClick={() => {
-                          downloadImage(`http://127.0.0.1:8000/storage/${image.label}`, image.label)
+                          downloadImage(`${domain}storage/${image.label}`, image.label)
                         }}
                         > 
                         <FontAwesomeIcon 

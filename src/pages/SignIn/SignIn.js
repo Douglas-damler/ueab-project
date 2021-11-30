@@ -12,6 +12,7 @@ export const SignIn = () => {
   const [ password, setPassword ] = useState('');
   const [ error, setError ] = useState('');
   const history = useHistory();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data =  {
@@ -34,10 +35,10 @@ export const SignIn = () => {
           history.push('/admin/dashboard');
         }
         else {
-          setError("Invalid credentials")
+          setError("Invalid credentials");
         }
-      }).catch(err => console.log(err.message))
-    }).catch(err => console.log(err.message))
+      }).catch(err => console.log(err.message));
+    }).catch(err => console.log(err.message));
   }
 
     return (
@@ -84,7 +85,13 @@ export const SignIn = () => {
                         </div>
       
                         <div className="pt-1 mb-4">
-                          <button className="btn btn-dark btn-lg btn-block" type="submit" >Login</button>
+                          <button 
+                            className="btn btn-warning btn-lg btn-block" 
+                            type="submit"
+                            id="signin-button"
+                          >
+                            Login
+                          </button>
                         </div>
                       </form>
                     </div>

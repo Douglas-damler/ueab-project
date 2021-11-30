@@ -23,6 +23,17 @@ i.fas {
     border-radius: 1rem;
 }
 
+#signin-button {
+    color: white;
+    outline: none;
+}
+
+#signin-button:hover{
+    background-color: rgb(7, 7, 104);
+    color: white;
+    outline: none !important;
+}
+
 @media screen and (max-width: 720px) {
     .vh-100 {
         margin-top: 0px;

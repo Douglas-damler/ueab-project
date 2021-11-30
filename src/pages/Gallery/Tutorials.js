@@ -3,12 +3,13 @@ import { TutorialList } from '../../components/tutorialList/tutorialList';
 import ReactLoading from 'react-loading';
 import './Tutorials.css';
 import axios from 'axios';
+import { domain } from '../../app/utilities';
 
 export const AllTutorials = () => {
    const [ tutorials, setTutorials ] = useState([]);
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/videos')
+        axios.get(`${domain}api/videos`)
         .then((response) => {
             setTutorials(response.data);
         }).catch((err) => console.log(err.message));

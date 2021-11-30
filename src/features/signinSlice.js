@@ -1,19 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const signInSlice = createSlice({
-    name: 'refresh',
-    initialState: {
-        render: sessionStorage.hasOwnProperty("auth_token")
-    },
+  name: "refresh",
+  initialState: {
+    render: sessionStorage.hasOwnProperty("auth_token"),
+  },
 
-    reducers: {
-        rerender: (state, action) => {
-            state.render = action.payload;
-        }
+  reducers: {
+    rerender: (state, action) => {
+      state.render = action.payload;
     },
+  },
 
-    extraReducers: {}
+  extraReducers: {},
 });
 
 export default signInSlice.reducer;
