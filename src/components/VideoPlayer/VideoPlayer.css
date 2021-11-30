@@ -52,6 +52,12 @@
     float: right;
 } */
 
+#delete-video-button {
+    outline: none;
+    border: solid 0.5px gray;
+    border-radius: 2px;
+    background-color: white;
+}
 
 
 @keyframes spin {
