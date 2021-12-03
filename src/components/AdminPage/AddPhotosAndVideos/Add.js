@@ -79,6 +79,7 @@ export const AddPhotosAndVideos = () => {
             toast.success("Images Uploaded");
             setImages([]);
             setImagesError("");
+            setImageDescription("");
           })
           .catch((err) => err.message);
       })
@@ -162,7 +163,7 @@ export const AddPhotosAndVideos = () => {
                     className="form-control"
                     rows="2"
                     minLength="5"
-                    maxLength="50"
+                    maxLength="90"
                     value={imageDescription}
                     onChange={(e) => {
                       setImageDescription(e.target.value);

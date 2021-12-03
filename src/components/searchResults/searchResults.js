@@ -44,8 +44,8 @@ export const SearchResults = () => {
     )
   ) : (
     <div className="p-5 seach-results">
-      <div class="spinner-border" role="status">
-        <span class="sr-only">Loading video...</span>
+      <div className="spinner-border" role="status">
+        <span className="sr-only">Loading video...</span>
       </div>
     </div>
   );

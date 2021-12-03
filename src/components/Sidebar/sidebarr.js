@@ -39,7 +39,7 @@ export const Sidebar = () => {
     <div className="row">
     <nav
       id="sidebarMenu"
-      className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse  mt-3"
+      className="col-md-3 col-lg-2 d-md-block bg-light sidebar  mt-3"
     >
       <div className="position-sticky pt-3">
         <ul className="nav flex-column">

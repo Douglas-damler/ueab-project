@@ -27,7 +27,6 @@ export const Gallery = () => {
   useEffect(() => {
     axios.get(`${domain}api/photos`).then((res) => {
       setImages(res.data.images);
-      console.log(res.data.images)
     }).catch((err) => console.log(err.message));
   }, []);
 
