@@ -124,7 +124,7 @@ export const AddPhotosAndVideos = () => {
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div className="d-flex" id="wrapper">
       <Sidebar />
-      <div className="container-fluid mt-0">
+      <div className="container-fluid mt-0 add">
         <div className="mb-4 mb-lg-0">
           <Breadcrumb
             className="d-none d-md-inline-block mt-4"
