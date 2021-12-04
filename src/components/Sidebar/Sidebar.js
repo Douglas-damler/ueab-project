@@ -42,10 +42,10 @@ export const Sidebar = () => {
 
   return (
     <div className="sidebar mt-2">
-      <div class="border-end bg-white" id="sidebar-wrapper">
-        <div class="list-group list-group-flush">
+      <div className="border-end bg-white" id="sidebar-wrapper">
+        <div className="list-group list-group-flush">
         <Link
-            class="list-group-item list-group-item-action list-group-item-light p-3"
+            className="list-group-item list-group-item-action list-group-item-light p-3"
             to="#"
           >
            <h5>Administrator</h5>
@@ -56,28 +56,28 @@ export const Sidebar = () => {
           </Link>
 
           <Link
-            class="list-group-item list-group-item-action list-group-item-light p-3"
+            className="list-group-item list-group-item-action list-group-item-light p-3"
             to="/admin/dashboard"
           >
             <span><FontAwesomeIcon icon={faTachometerAlt} /> </span>
             Dashboard
           </Link>
           <Link
-            class="list-group-item list-group-item-action list-group-item-light p-3"
+            className="list-group-item list-group-item-action list-group-item-light p-3"
             to="/admin/add-photos-and-videos"
           >
             <span> <FontAwesomeIcon icon={faPlus} /> </span>
             Add Photos and Videos
           </Link>
           <Link
-            class="list-group-item list-group-item-action list-group-item-light p-3"
+            className="list-group-item list-group-item-action list-group-item-light p-3"
             to="/admin/add-new-admins"
           >
              <span> <FontAwesomeIcon icon={faUsers} /> </span>
             Users
           </Link>
           <Link
-            class="list-group-item list-group-item-action list-group-item-light p-3"
+            className="list-group-item list-group-item-action list-group-item-light p-3"
             to="#"
             onClick={handleSignout}
           >

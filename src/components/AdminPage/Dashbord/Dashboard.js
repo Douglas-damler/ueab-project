@@ -46,7 +46,7 @@ export const Dashboard = () => {
 
   return (
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="d-flex" id="wrapper">
+    <div className="d-flex" id="wrapper">
       <Sidebar />
       <div className="dashboard container-fluid">
         <div className="mb-4 mb-lg-0">

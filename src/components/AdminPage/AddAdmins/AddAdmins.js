@@ -92,7 +92,7 @@ export const AddAdmins = () => {
 
   return (
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="d-flex" id="wrapper">
+    <div className="d-flex" id="wrapper">
       <Sidebar />
       <div className="container-fluid add-admins">
         <div className="d-lg-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">

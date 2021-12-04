@@ -122,7 +122,7 @@ export const AddPhotosAndVideos = () => {
 
   return (
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="d-flex" id="wrapper">
+    <div className="d-flex" id="wrapper">
       <Sidebar />
       <div className="container-fluid mt-0">
         <div className="mb-4 mb-lg-0">
