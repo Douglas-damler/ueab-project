@@ -7,6 +7,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { domain } from "../../../app/utilities";
+import { Sidebar } from "../../Sidebar/Sidebar";
 
 toast.configure();
 
@@ -91,7 +92,9 @@ export const AddAdmins = () => {
 
   return (
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div className="add-admins">
+    <div class="d-flex" id="wrapper">
+      <Sidebar />
+      <div className="container-fluid add-admins">
         <div className="d-lg-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
           <div className="mb-4 mb-lg-0">
             <Breadcrumb
@@ -109,7 +112,7 @@ export const AddAdmins = () => {
             <h4 className="p-2">Admins List</h4>
           </div>
         </div>
-        <div className="btn-toolbar mb-2 mb-md-0">
+        <div className="btn-toolbar mb-1 mb-md-0">
           <Button
             type="button"
             className="btn btn-primary ml-2"
@@ -120,7 +123,7 @@ export const AddAdmins = () => {
           </Button>
         </div>
 
-        <Card border="light" className="table-wrapper shadow-sm mt-3">
+        <Card border="light" className="table-wrapper shadow-sm mt-0">
           <Card.Body>
             <Table className="user-table align-items-center table-hover">
               <thead>
@@ -237,6 +240,7 @@ export const AddAdmins = () => {
           </form>
         </div>
       </div>
+    </div>
     </main>
   );
 };

@@ -6,6 +6,7 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { domain } from "../../../app/utilities";
+import { Sidebar } from "../../Sidebar/Sidebar";
 
 export const AddPhotosAndVideos = () => {
   const [link, setLink] = useState(false);
@@ -121,10 +122,12 @@ export const AddPhotosAndVideos = () => {
 
   return (
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex" id="wrapper">
+      <Sidebar />
       <div className="container-fluid mt-0">
         <div className="mb-4 mb-lg-0">
           <Breadcrumb
-            className="d-none d-md-inline-block mt-5"
+            className="d-none d-md-inline-block mt-4"
             listProps={{ className: "breadcrumb-dark breadcrumb-transparent" }}
           >
             <Breadcrumb.Item>
@@ -282,6 +285,7 @@ export const AddPhotosAndVideos = () => {
           </form>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
   );
 };

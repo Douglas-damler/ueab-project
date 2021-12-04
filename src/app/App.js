@@ -11,7 +11,6 @@ import { Gallery } from "../components/Gallery/Gallery";
 import { SignIn } from "../pages/SignIn/SignIn";
 import { Dashboard } from "../components/AdminPage/Dashbord/Dashboard";
 import { AddPhotosAndVideos } from "../components/AdminPage/AddPhotosAndVideos/Add";
-import { Sidebar } from "../components/Sidebar/Sidebar";
 import { AddAdmins } from "../components/AdminPage/AddAdmins/AddAdmins";
 import { NotFound } from "../components/NotFound/NotFound";
 import { Redirect } from "react-router";
@@ -52,7 +51,6 @@ function App() {
           <Route exact path="/admin/dashboard">
             {isAunthenticated ? (
               <>
-                <Sidebar />
                 <Dashboard />
               </>
             ) : (
@@ -63,7 +61,6 @@ function App() {
           <Route exact path="/admin/add-new-admins">
             {isAunthenticated ? (
               <>
-                <Sidebar />
                 <AddAdmins />
               </>
             ) : (
@@ -74,7 +71,6 @@ function App() {
           <Route exact path="/admin/add-photos-and-videos">
             {isAunthenticated ? (
               <>
-                <Sidebar />
                 <AddPhotosAndVideos />
               </>
             ) : (

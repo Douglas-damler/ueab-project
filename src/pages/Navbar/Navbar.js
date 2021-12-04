@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import image from '../../images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faHome } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 
 export const Navigation = () => {
@@ -12,7 +12,12 @@ export const Navigation = () => {
   return (
       <Navbar className="navbar-sticky" collapseOnSelect expand="lg" style={{background: "#3352a5"}} variant="light">
         <Container>
-          <Navbar.Brand style={{background: "none", border: "none", padding: "0"}} to="/"><img className="logo" style={{height: "45px", borderBlock: "none"}} src={image} alt="ueab logo" /></Navbar.Brand>
+          <Navbar.Brand 
+            style={{background: "none", border: "none", padding: "0"}} 
+            to="/">
+            <img className="logo" style={{height: "45px", borderBlock: "none"}} src={image} alt="ueab logo" />
+            { render ? (<span><FontAwesomeIcon style={{color: "white"}} id="sidebarToggle" icon={faBars} /></span>): (<></>)}
+          </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav" className="links">
                 <Nav className="me-auto">

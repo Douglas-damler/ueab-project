@@ -3,7 +3,12 @@ import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faSignOutAlt, faTachometerAlt, faUsers} from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faSignOutAlt,
+  faTachometerAlt,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { rerender } from "../../features/signinSlice";
@@ -36,63 +41,51 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="row">
-    <nav
-      id="sidebarMenu"
-      className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse  mt-3"
-    >
-      <div className="position-sticky pt-3">
-        <ul className="nav flex-column">
-          <li className="nav-item">
-            <Link className="nav-link" to="/admin/dashboard">
-              <span data-feather="home"></span>
-              <h5>Administrator</h5>
-              <small
-                style={{ color: "orange", fontWeight: "bold" }}
-              >{`${sessionStorage
-                .getItem("auth_name")
-                .split("@")[0]
-                .toLocaleUpperCase()}`}</small>
-            </Link>
-          </li>
-          <hr />
-          <li className="nav-item">
-            <Link className="nav-link" to="/admin/dashboard">
-              <span data-feather="home"><FontAwesomeIcon icon={faTachometerAlt}/> </span>
-              Dashboard
-            </Link>
-          </li>
-          <hr />
-          <li className="nav-item">
-            <Link className="nav-link" to="/admin/add-photos-and-videos">
-              <span data-feather="shopping-cart"><FontAwesomeIcon icon={faPlus} /> </span>
-              Add Videos & Photos
-            </Link>
-          </li>
-          <hr />
-          <li className="nav-item">
-            <Link className="nav-link" to="/admin/add-new-admins">
-              <span data-feather="users"><FontAwesomeIcon icon={faUsers} /> </span>
-              Users
-            </Link>
-          </li>
-          <hr />
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              to="#"
-              onClick={() => {
-                handleSignout(history, token);
-              }}
-            >
-              <span data-feather="users"><FontAwesomeIcon icon={faSignOutAlt} /> </span>
-              SignOut 
-            </Link>
-          </li>
-          <hr />
-        </ul>
+    <div className="sidebar mt-2">
+      <div class="border-end bg-white" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+        <Link
+            class="list-group-item list-group-item-action list-group-item-light p-3"
+            to="#"
+          >
+           <h5>Administrator</h5>
+          <small style={{ color: "orange" , fontWeight: "bold" }}>{`${sessionStorage
+            .getItem("auth_name")
+            .split("@")[0]
+            .toLocaleUpperCase()}`}</small>
+          </Link>
+
+          <Link
+            class="list-group-item list-group-item-action list-group-item-light p-3"
+            to="/admin/dashboard"
+          >
+            <span><FontAwesomeIcon icon={faTachometerAlt} /> </span>
+            Dashboard
+          </Link>
+          <Link
+            class="list-group-item list-group-item-action list-group-item-light p-3"
+            to="/admin/add-photos-and-videos"
+          >
+            <span> <FontAwesomeIcon icon={faPlus} /> </span>
+            Add Photos and Videos
+          </Link>
+          <Link
+            class="list-group-item list-group-item-action list-group-item-light p-3"
+            to="/admin/add-new-admins"
+          >
+             <span> <FontAwesomeIcon icon={faUsers} /> </span>
+            Users
+          </Link>
+          <Link
+            class="list-group-item list-group-item-action list-group-item-light p-3"
+            to="#"
+            onClick={handleSignout}
+          >
+             <span> <FontAwesomeIcon icon={faSignOutAlt} /> </span>
+            Signout
+          </Link>
+        </div>
       </div>
-    </nav>
-  </div>
+    </div>
   );
 };

@@ -10,6 +10,7 @@ import {
   faUserCog,
 } from "@fortawesome/free-solid-svg-icons";
 import { domain } from "../../../app/utilities";
+import { Sidebar } from "../../Sidebar/Sidebar";
 
 export const Dashboard = () => {
   const [users, setUsers] = useState([]);
@@ -45,7 +46,9 @@ export const Dashboard = () => {
 
   return (
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div className="dashboard">
+    <div class="d-flex" id="wrapper">
+      <Sidebar />
+      <div className="dashboard container-fluid">
         <div className="mb-4 mb-lg-0">
           <Breadcrumb
             className="d-none d-md-inline-block mt-4"
@@ -58,7 +61,7 @@ export const Dashboard = () => {
           </Breadcrumb>
         </div>
 
-        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 mb-3 border-bottom">
           <h1 className="h2 p-2">Admin Dashboard</h1>
         </div>
 
@@ -158,6 +161,7 @@ export const Dashboard = () => {
           </div>
         </div>
       </div>
-    </main>
+      </div>
+      </main>
   );
 };
