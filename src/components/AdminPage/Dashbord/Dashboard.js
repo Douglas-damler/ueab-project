@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { domain } from "../../../app/utilities";
 import { Sidebar } from "../../Sidebar/Sidebar";
+import { Footer } from "../../footer/footer";
 
 export const Dashboard = () => {
   const [users, setUsers] = useState([]);
@@ -162,6 +163,7 @@ export const Dashboard = () => {
         </div>
       </div>
       </div>
+      <Footer />
       </main>
   );
 };

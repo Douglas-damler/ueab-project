@@ -30,7 +30,7 @@ export const About = () => {
               </p>
             </div>
             <div className="col-md-6">
-              <p>E-learning</p>
+              <p style={{fontWeight: "bold"}}>E-learning</p>
               <p>Here to help you with anything....</p>
             </div>
           </div>
@@ -90,6 +90,7 @@ export const About = () => {
                   href="https://ielearning.ueab.ac.ke/"
                   target="_blank"
                   rel="noreferrer"
+                  
                 >
                   E-learning
                 </a>

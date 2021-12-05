@@ -8,6 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Filesaver from 'file-saver';
 import { domain } from "../../app/utilities";
+import { Footer } from "../footer/footer";
 
 export const Gallery = () => {
   const [showModal, setShowModal] = useState(false);
@@ -90,6 +91,7 @@ export const Gallery = () => {
                         <FontAwesomeIcon 
                           className="dropdown-icon" 
                           icon={faDownload} 
+                          style={{color: "blue"}}
                       /> Download
                       </button>
                       { sessionStorage.getItem("auth_token") ? (
@@ -113,6 +115,7 @@ export const Gallery = () => {
         })}
       </div>
       <GalleryModal  isOpen={showModal} onClick={closeModal} src={url} />
+      <Footer />
     </div>
   );
 };

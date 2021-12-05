@@ -1,12 +1,30 @@
 .main {
     width: 90%;
     margin: 0 auto;
-    /* margin-top: 50px; */
-    /* margin-top: 30px; */
+}
+
+.tutorials-not-available {
+    width: 40%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.tutorials-not-available p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.tutorials-not-available img {
+    width: 70%;
+    height: auto;
 }
 
 @media screen and (max-width: 720px) {
     .featured-title {
        text-align: center; 
+    }
+
+    .tutorials-not-available {
+        width: 80%;
     }
 }

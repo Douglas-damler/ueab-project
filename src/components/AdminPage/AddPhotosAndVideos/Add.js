@@ -161,7 +161,7 @@ export const AddPhotosAndVideos = () => {
                 <br />
                 <small style={{ color: "red" }}>{imagesError}</small>
                 <div className="form-group">
-                  <label htmlFor="comment">Short Descriptionr(optional)</label>
+                  <label htmlFor="comment">Short Description(optional)</label>
                   <textarea
                     className="form-control"
                     rows="2"

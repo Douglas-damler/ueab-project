@@ -37,18 +37,21 @@ export const VideoPlayer = () => {
         setTutorial(response.data.data);
         setLoading(false);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        console.log(err.message);
+        setLoading(false);
+      });
   }, [id]);
 
   return loading ? (
     <div className="video-player pt-5">
-      <div className="loader "></div>
+      <div className="ml-4 loader "></div>
     </div>
   ) : tutorial.youtubeUrl ? (
     <div className=" container">
       <div className="video-player row">
         <h3 className="pt-5 col-12">{tutorial ? `${tutorial.title}` : ""}</h3>
-        <div class="holds-the-iframe col-md-9">
+        <div className="holds-the-iframe col-md-9">
           <ReactPlayer
             className="react-player"
             width="100%"
@@ -79,7 +82,7 @@ export const VideoPlayer = () => {
       </div>
     </div>
   ) : (
-    <div className="video-player">
+    <div className="video-player p-5">
       <p>
         Oooh, No! A video with that link does not exist. Maybe you changed
         something on the address bar😉
