@@ -1,3 +1,4 @@
+import React from 'react';
 import "../App.css";
 import { Home } from "../pages/Home/Home";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -14,9 +15,10 @@ import { AddPhotosAndVideos } from "../components/AdminPage/AddPhotosAndVideos/A
 import { AddAdmins } from "../components/AdminPage/AddAdmins/AddAdmins";
 import { NotFound } from "../components/NotFound/NotFound";
 import { Redirect } from "react-router";
+import { useSelector } from 'react-redux';
 
 function App() {
-  const isAunthenticated = sessionStorage.getItem("auth_token");
+  const isAunthenticated = useSelector((state) => state.signin.render);
 
   return (
     <Router>
@@ -85,6 +87,7 @@ function App() {
           <Route>
             <NotFound />
           </Route>
+          
         </Switch>
       </div>
     </Router>

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Breadcrumb } from "react-bootstrap";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import {
+import {  
   faImages,
   faVideo,
   faUserCog,
@@ -14,11 +14,11 @@ import { Sidebar } from "../../Sidebar/Sidebar";
 import { Footer } from "../../footer/footer";
 
 export const Dashboard = () => {
-  const [users, setUsers] = useState([]);
-  const [photos, setPhotos] = useState([]);
-  const [videos, setVideos] = useState([]);
+  const [ users, setUsers ] = useState([]);
+  const [ photos, setPhotos ] = useState([]);
+  const [ videos, setVideos ] = useState([]);
   const token = sessionStorage.getItem("auth_token");
-
+  
   useEffect(() => {
     axios
       .get(`${domain}sanctum/csrf-cookie`)
@@ -43,6 +43,7 @@ export const Dashboard = () => {
         });
       })
       .catch((err) => console.log(err.message));
+      console.log("Hi, there✋ You're now logged in as the Admin. Please post responsible content")
   }, [token]);
 
   return (
@@ -63,7 +64,7 @@ export const Dashboard = () => {
         </div>
 
         <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-2 mb-3 border-bottom">
-          <h1 className="h2 p-2">Admin Dashboard</h1>
+          <h3 className="h3 p-2">Admin Dashboard</h3>
         </div>
 
         <div className="row mb-3">
@@ -135,7 +136,7 @@ export const Dashboard = () => {
                 <div className="card-title">List of Admins</div>
               </div>
               <div className="card-body">
-                <table className="table table-hover user-table">
+                <table className="table table-hover border user-table">
                   <thead>
                     <tr>
                       <th scope="col">#</th>

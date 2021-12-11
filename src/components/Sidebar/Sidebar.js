@@ -18,7 +18,7 @@ import { domain } from "../../app/utilities";
 export const Sidebar = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const token = sessionStorage.getItem("auth_token");
+  const token = sessionStorage.getItem("auth_token"); //get aunthetication token from the local storage
 
   const handleSignout = () => {
     axios
@@ -44,36 +44,49 @@ export const Sidebar = () => {
     <div className="sidebar mt-2">
       <div className="border-end bg-white" id="sidebar-wrapper">
         <div className="list-group list-group-flush">
-        <Link
+          <Link
             className="list-group-item list-group-item-action list-group-item-light p-3"
             to="#"
           >
-           <h5>Administrator</h5>
-          <small style={{ color: "orange" , fontWeight: "bold" }}>{`${sessionStorage
-            .getItem("auth_name")
-            .split("@")[0]
-            .toLocaleUpperCase()}`}</small>
+            <h5>Administrator</h5>
+            <small className="administrator-name">
+              {`${sessionStorage
+                .getItem("auth_name")
+                .split("@")[0]
+                .toLocaleUpperCase()}`}
+            </small>
           </Link>
 
           <Link
             className="list-group-item list-group-item-action list-group-item-light p-3"
             to="/admin/dashboard"
           >
-            <span><FontAwesomeIcon icon={faTachometerAlt} /> </span>
+            <span>
+              <FontAwesomeIcon
+                className="sidebar-icons"
+                icon={faTachometerAlt}
+              />{" "}
+            </span>
             Dashboard
           </Link>
           <Link
             className="list-group-item list-group-item-action list-group-item-light p-3"
             to="/admin/add-photos-and-videos"
           >
-            <span> <FontAwesomeIcon icon={faPlus} /> </span>
+            <span>
+              {" "}
+              <FontAwesomeIcon className="sidebar-icons" icon={faPlus} />{" "}
+            </span>
             Add Photos and Videos
           </Link>
           <Link
             className="list-group-item list-group-item-action list-group-item-light p-3"
             to="/admin/add-new-admins"
           >
-             <span> <FontAwesomeIcon icon={faUsers} /> </span>
+            <span>
+              {" "}
+              <FontAwesomeIcon className="sidebar-icons" icon={faUsers} />{" "}
+            </span>
             Users
           </Link>
           <Link
@@ -81,7 +94,13 @@ export const Sidebar = () => {
             to="#"
             onClick={handleSignout}
           >
-             <span> <FontAwesomeIcon icon={faSignOutAlt} /> </span>
+            <span>
+              {" "}
+              <FontAwesomeIcon
+                className="sidebar-icons"
+                icon={faSignOutAlt}
+              />{" "}
+            </span>
             Signout
           </Link>
         </div>

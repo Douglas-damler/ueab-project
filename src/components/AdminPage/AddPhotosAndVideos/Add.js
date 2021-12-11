@@ -260,7 +260,8 @@ export const AddPhotosAndVideos = () => {
 
                 <div className="form-group" hidden={!video}>
                   <label>Upload a Video</label> <br />
-                  <input type="file" className="form-control mt-4" />
+                  <small style={{color: "rd"}}>Upload video is still under development</small>
+                  <input disabled type="file" className="form-control mt-4" />
                 </div>
 
                 <div className="form-group">

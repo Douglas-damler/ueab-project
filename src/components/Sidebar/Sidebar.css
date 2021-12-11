@@ -40,9 +40,6 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   }
 }
 
-body {
-  font-size: .875rem;
-}
 
 .sidebar {
   position: fixed;
@@ -56,5 +53,16 @@ body {
 
 .list-group-item {
   font-weight: bold;
+}
+
+.sidebar-icons {
+  color: rgb(161, 138, 241);
+}
+
+.administrator-name {
+  color: orange;
+  font-weight: bold;
+  font-style: normal;
+  font-family: sans-serif;
 }
 

@@ -7,9 +7,9 @@ export const Footer = () => {
   const date = new Date().getFullYear();
 
   return (
-    <footer class="footer ">
-      <div class="container">
-        <div class="copyright mb-3 ml-auto">
+    <footer className="footer ">
+      <div className="container">
+        <div className="copyright mb-3 ml-auto">
           &copy; University of Eastern Africa, Baraton {date}, made with{" "}
           <FontAwesomeIcon style={{ color: "red" }} icon={faHeart} /> by{" "}
           <strong href="#">Peter & Douglas</strong>

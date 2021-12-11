@@ -86,9 +86,8 @@ export const SignIn = () => {
       
                         <div className="pt-1 mb-4">
                           <button 
-                            className="btn btn-warning btn-lg btn-block" 
+                            className="btn btn-dark btn-lg btn-block" 
                             type="submit"
-                            id="signin-button"
                           >
                             Login
                           </button>
