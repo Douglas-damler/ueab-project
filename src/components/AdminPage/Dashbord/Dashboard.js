@@ -43,7 +43,7 @@ export const Dashboard = () => {
         });
       })
       .catch((err) => console.log(err.message));
-      console.log("Hi, there✋ You're now logged in as the Admin. Please post responsible content")
+      console.log("Hi, there✋ You're now logged in as the Admin. Please post responsible content.")
   }, [token]);
 
   return (

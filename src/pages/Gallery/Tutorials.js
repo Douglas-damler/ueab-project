@@ -10,7 +10,7 @@ export const AllTutorials = () => {
   const [tutorials, setTutorials] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useEffect(() => { //Request the tutorials when the page loads
     axios
       .get(`${domain}api/videos`)
       .then((response) => {
@@ -37,7 +37,7 @@ export const AllTutorials = () => {
       ) : (
         <div className="tutorials-not-available pt-5">
           <p>
-            Ooh No! There are no tutorials at this time. Please come
+            Uuhm! It looks like there are no tutorials. Please come
             back later
           </p>
           <img src={comeBackLater} alt="come back later" />

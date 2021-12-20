@@ -12,7 +12,7 @@ export const GalleryModal = (props) => {
     <div className="modal-overlay" onClick={props.onClick} name={props.name}>
       <div className="modal-body modal-image">
         <i className="modal-close" onClick={props.onClick}>
-          <span>
+          <span className="close-icon-container">
             <FontAwesomeIcon className="close-icon" icon={faTimes} />
           </span>
         </i>

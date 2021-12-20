@@ -36,6 +36,7 @@ export const Sidebar = () => {
     sessionStorage.removeItem("auth_token");
     sessionStorage.removeItem("auth_name");
     sessionStorage.removeItem("id");
+    localStorage.removeItem("sb|sidebar-toggle");
     dispatch(rerender(false));
     history.push("/sign-in");
   };

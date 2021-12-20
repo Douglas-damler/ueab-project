@@ -72,7 +72,7 @@ export const Gallery = () => {
                 <div className="dropdown-container">
                   <div className="dropdown dropleft">
                     <FontAwesomeIcon 
-                      className="m-1  dropdown-toggle" 
+                      className="m-1 dropdown-toggle" 
                       type="button" 
                       id="dropdownMenu2" 
                       data-toggle="dropdown"
@@ -91,7 +91,7 @@ export const Gallery = () => {
                         <FontAwesomeIcon 
                           className="dropdown-icon" 
                           icon={faDownload} 
-                          style={{color: "blue"}}
+                          style={{color: "#00a2ff"}}
                       /> Download
                       </button>
                       { sessionStorage.getItem("auth_token") ? (
