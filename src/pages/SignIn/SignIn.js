@@ -110,7 +110,7 @@ export const SignIn = () => {
                             class={load ? (`spinner-border spinner-border-sm`):(``)}
                             role="status"
                             aria-hidden="true"
-                          ></span> { load ? (`Loading...`): (`Submit`)}
+                          ></span> { load ? (`Processing...`): (`Submit`)}
                         </button>
                       </div>
                     </form>

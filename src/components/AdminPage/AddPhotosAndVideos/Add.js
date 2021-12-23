@@ -82,9 +82,9 @@ export const AddPhotosAndVideos = () => {
             setImagesError("");
             setImageDescription("");
           })
-          .catch((err) => err.message);
+          .catch((err) => console.log(err.message));
       })
-      .catch((err) => err.message);
+      .catch((err) => console.log(err.message));
   };
 
   const handleSubmitVideos = (event) => {
@@ -92,7 +92,7 @@ export const AddPhotosAndVideos = () => {
     var regExp =
       /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
     if (!youtubeLink.match(regExp)) {
-      setLinkError("Please Enter a valid youtube link");
+      setLinkError("Please enter a valid youtube link");
       return;
     }
 
@@ -174,7 +174,7 @@ export const AddPhotosAndVideos = () => {
                   ></textarea>
                 </div>
                 <div className="card-action mt-3">
-                  <button type="submit" className="btn btn-success mr-4">
+                  <button type="submit" className="btn btn-primary mr-4">
                     Submit
                   </button>
                 </div>
@@ -278,7 +278,7 @@ export const AddPhotosAndVideos = () => {
                 </div>
               </div>
               <div className="card-action">
-                <button className="btn btn-success" type="submit">
+                <button className="btn btn-primary" type="submit">
                   Submit
                 </button>
               </div>
