@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./tutorial.css";
-// import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Timeago from "react-timeago";
 
 export const Tutorial = (props) => {
   return (
@@ -24,6 +23,12 @@ export const Tutorial = (props) => {
           <div className="card-meta">
             <p className="tutorial-description">
               {props.tutorial.description.substring(0, 160)}
+            </p>
+            <p className="posted-at">
+              Posted{" "}
+              <span>
+                <Timeago date={props.tutorial.created_at} />
+              </span>
             </p>
           </div>
         </div>

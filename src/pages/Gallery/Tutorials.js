@@ -14,6 +14,7 @@ export const AllTutorials = () => {
     axios
       .get(`${domain}api/videos`)
       .then((response) => {
+        console.log(response.data)
         setTutorials(response.data);
         setLoading(false);
       })
@@ -31,7 +32,7 @@ export const AllTutorials = () => {
         </div>
       ) : tutorials.length ? (
         <div>
-          <h3 className="featured-title pt-5">E-learning Tutorials</h3>
+          <h3 className="featured-title pt-5">Tutorials</h3>
           <TutorialList tutorials={tutorials} />
         </div>
       ) : (
